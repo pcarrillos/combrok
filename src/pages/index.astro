@@ -1,0 +1,323 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '@/utils/constants';
+
+// Get featured posts and top brokers
+const allPosts = await getCollection('posts', ({ data }) => {
+  return data.status === 'published' && !data.noindex;
+});
+
+const featuredPosts = allPosts
+  .filter(post => post.data.featured)
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
+
+const recentPosts = allPosts
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 6);
+
+const allBrokers = await getCollection('brokers');
+const topBrokers = allBrokers
+  .filter(broker => !broker.data.scamAlert && !broker.data.blacklisted)
+  .sort((a, b) => b.data.trustScore - a.data.trustScore)
+  .slice(0, 4);
+---
+
+<BaseLayout 
+  title={`${SITE.name} - Portal independiente de análisis de brokers`}
+  description="Descubre los mejores brokers, análisis independientes, noticias de inversión y educación financiera. Tu guía confiable en el mundo del trading."
+>
+  <Header />
+  
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+      <div class="container">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Tu guía independiente en el
+            <span class="text-blue-600">mundo del trading</span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Análisis honestos de brokers, noticias actualizadas y educación financiera 
+            para tomar las mejores decisiones de inversión.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/brokers" 
+              class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Ver Brokers
+            </a>
+            <a 
+              href="/blog" 
+              class="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            >
+              Leer Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Posts -->
+    {featuredPosts.length > 0 && (
+      <section class="py-16 bg-white">
+        <div class="container">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Artículos Destacados</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Los análisis más importantes y noticias relevantes del mercado financiero
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            {featuredPosts.map(post => (
+              <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="aspect-video bg-gray-100">
+                  <img 
+                    src={post.data.image.src.src} 
+                    alt={post.data.image.alt}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">
+                      {post.data.category}
+                    </span>
+                    <span class="text-gray-500 text-sm">
+                      {post.data.readingTime} min lectura
+                    </span>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                    <a href={`/blog/${post.slug}`} class="hover:text-blue-600 transition-colors">
+                      {post.data.title}
+                    </a>
+                  </h3>
+                  <p class="text-gray-600 mb-4 line-clamp-3">
+                    {post.data.description}
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-500">
+                      {post.data.publishDate.toLocaleDateString('es-ES')}
+                    </span>
+                    <a 
+                      href={`/blog/${post.slug}`}
+                      class="text-blue-600 text-sm font-medium hover:text-blue-800"
+                    >
+                      Leer más →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Top Brokers -->
+    {topBrokers.length > 0 && (
+      <section class="py-16 bg-gray-50">
+        <div class="container">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Brokers Mejor Valorados</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Nuestra selección de brokers con las mejores calificaciones y mayor confiabilidad
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {topBrokers.map(broker => (
+              <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                  <img 
+                    src={broker.data.logo.src} 
+                    alt={`Logo de ${broker.data.name}`}
+                    class="w-12 h-12 object-contain"
+                    loading="lazy"
+                  />
+                  <div>
+                    <h3 class="font-bold text-gray-900">{broker.data.name}</h3>
+                    <p class="text-sm text-gray-500">{broker.data.countryOrigin}</p>
+                  </div>
+                </div>
+                
+                <div class="space-y-2 mb-4">
+                  <div class="flex justify-between">
+                    <span class="text-sm text-gray-600">Puntuación:</span>
+                    <div class="flex items-center gap-1">
+                      <span class="text-sm font-bold text-gray-900">{broker.data.rating}/5</span>
+                      <div class="flex">
+                        {Array.from({length: 5}, (_, i) => (
+                          <svg 
+                            class={`w-4 h-4 ${i < Math.floor(broker.data.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                            fill="currentColor" 
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex justify-between">
+                    <span class="text-sm text-gray-600">Depósito mín:</span>
+                    <span class="text-sm font-medium">${broker.data.minDeposit}</span>
+                  </div>
+                  
+                  <div class="flex justify-between">
+                    <span class="text-sm text-gray-600">Regulado:</span>
+                    <span class={`text-sm font-medium ${broker.data.isRegulated ? 'text-green-600' : 'text-red-600'}`}>
+                      {broker.data.isRegulated ? 'Sí' : 'No'}
+                    </span>
+                  </div>
+                </div>
+                
+                <a 
+                  href={`/brokers/${broker.slug}`}
+                  class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                >
+                  Ver Análisis
+                </a>
+              </div>
+            ))}
+          </div>
+          
+          <div class="text-center mt-8">
+            <a 
+              href="/brokers" 
+              class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800"
+            >
+              Ver todos los brokers 
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Recent Posts -->
+    {recentPosts.length > 0 && (
+      <section class="py-16 bg-white">
+        <div class="container">
+          <div class="flex items-center justify-between mb-12">
+            <div>
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">Últimas Noticias</h2>
+              <p class="text-gray-600">
+                Mantente informado con las últimas noticias del mercado financiero
+              </p>
+            </div>
+            <a 
+              href="/blog" 
+              class="hidden md:inline-flex items-center text-blue-600 font-medium hover:text-blue-800"
+            >
+              Ver todo el blog
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recentPosts.map(post => (
+              <article class="group">
+                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
+                  <img 
+                    src={post.data.image.src.src} 
+                    alt={post.data.image.alt}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded font-medium">
+                    {post.data.category}
+                  </span>
+                  <span class="text-gray-500 text-sm">
+                    {post.data.publishDate.toLocaleDateString('es-ES')}
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                  <a href={`/blog/${post.slug}`} class="hover:text-blue-600 transition-colors">
+                    {post.data.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 text-sm line-clamp-3">
+                  {post.data.description}
+                </p>
+              </article>
+            ))}
+          </div>
+          
+          <div class="text-center mt-8 md:hidden">
+            <a 
+              href="/blog" 
+              class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800"
+            >
+              Ver todo el blog
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Newsletter CTA -->
+    <section class="py-16 bg-blue-600">
+      <div class="container">
+        <div class="max-w-2xl mx-auto text-center text-white">
+          <h2 class="text-3xl font-bold mb-4">
+            Mantente informado
+          </h2>
+          <p class="text-blue-100 mb-8">
+            Recibe nuestro análisis semanal de brokers y las noticias más importantes del mercado
+          </p>
+          <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input 
+              type="email" 
+              placeholder="Tu email"
+              class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500"
+              required
+            />
+            <button 
+              type="submit"
+              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Suscribirme
+            </button>
+          </form>
+          <p class="text-xs text-blue-100 mt-4">
+            Sin spam. Solo contenido de valor. Cancela cuando quieras.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

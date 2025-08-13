@@ -1,0 +1,81 @@
+---
+import { SITE } from '@/utils/constants';
+---
+
+<footer role="contentinfo" class="bg-gray-50 border-t border-gray-200 mt-auto">
+  <div class="container py-12">
+    <div class="grid md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <div class="flex items-center space-x-2 mb-4">
+          <svg width="24" height="24" viewBox="0 0 32 32" class="text-blue-600">
+            <path fill="currentColor" d="M16 2L3 9v14l13 7 13-7V9L16 2zm0 2.5L25.5 10 16 15.5 6.5 10 16 4.5zM5 11.5l10 5.5v11L5 22.5v-11zm22 0v11L17 28V17l10-5.5z"/>
+          </svg>
+          <span class="font-bold text-gray-900">Comunidad Broker</span>
+        </div>
+        <p class="text-gray-600 text-sm">
+          Portal independiente de análisis de brokers y noticias de inversión.
+        </p>
+      </div>
+      
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-semibold text-gray-900 mb-4">Navegación</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/blog" class="text-gray-600 hover:text-blue-600">Blog</a></li>
+          <li><a href="/brokers" class="text-gray-600 hover:text-blue-600">Brokers</a></li>
+          <li><a href="/categoria/educacion" class="text-gray-600 hover:text-blue-600">Educación</a></li>
+          <li><a href="/categoria/alertas" class="text-gray-600 hover:text-blue-600">Alertas</a></li>
+        </ul>
+      </div>
+      
+      <!-- Categories -->
+      <div>
+        <h3 class="font-semibold text-gray-900 mb-4">Categorías</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/categoria/noticias" class="text-gray-600 hover:text-blue-600">Noticias</a></li>
+          <li><a href="/categoria/analisis" class="text-gray-600 hover:text-blue-600">Análisis</a></li>
+          <li><a href="/tema/forex" class="text-gray-600 hover:text-blue-600">Forex</a></li>
+          <li><a href="/tema/criptomonedas" class="text-gray-600 hover:text-blue-600">Criptomonedas</a></li>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div>
+        <h3 class="font-semibold text-gray-900 mb-4">Legal</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/legal/aviso-legal" class="text-gray-600 hover:text-blue-600">Aviso Legal</a></li>
+          <li><a href="/legal/privacidad" class="text-gray-600 hover:text-blue-600">Privacidad</a></li>
+          <li><a href="/legal/cookies" class="text-gray-600 hover:text-blue-600">Cookies</a></li>
+          <li><a href="/legal/disclaimer" class="text-gray-600 hover:text-blue-600">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Risk Warning -->
+    <div class="mt-8 pt-8 border-t border-gray-200">
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <span class="text-yellow-400 text-lg">⚠️</span>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-yellow-800">
+              <strong>Advertencia de riesgo:</strong> El trading conlleva un alto riesgo de pérdida de capital. 
+              Los CFDs son instrumentos complejos y el 74-89% de las cuentas minoristas pierden dinero. 
+              El contenido de este sitio es solo informativo y no constituye asesoramiento financiero.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+        <p>© 2024 {SITE.name}. Todos los derechos reservados.</p>
+        <p class="mt-2 md:mt-0">
+          Hecho con ❤️ para la comunidad de traders
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,91 @@
+---
+import { SITE } from '@/utils/constants';
+import '@/styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+}
+
+const { 
+  title = SITE.name,
+  description = SITE.description,
+  image = SITE.image,
+  canonical,
+  noindex = false,
+  type = 'website'
+} = Astro.props;
+
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="es_ES" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    
+    <!-- Preconnect to important domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://plausible.io" />
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//images.unsplash.com" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0d6efd" />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body>
+    <!-- Skip Links para accesibilidad -->
+    <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+    <a href="#main-navigation" class="skip-link">Ir a la navegación</a>
+    
+    <div id="app" class="min-h-screen flex flex-col">
+      <slot />
+    </div>
+    
+    <!-- Analytics (Plausible) -->
+    <script defer data-domain="comunidadbroker.com" src="https://plausible.io/js/script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
+  </body>
+</html>

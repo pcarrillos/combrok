@@ -1,0 +1,300 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Security: Basic check (in production, use proper authentication)
+const isAuthenticated = false; // TODO: Implement proper auth
+
+if (!isAuthenticated) {
+  return Astro.redirect('/admin/login');
+}
+
+// Get content statistics
+const allPosts = await getCollection('posts');
+const allBrokers = await getCollection('brokers');
+
+const stats = {
+  posts: {
+    total: allPosts.length,
+    published: allPosts.filter(p => p.data.status === 'published').length,
+    draft: allPosts.filter(p => p.data.status === 'draft').length,
+    scheduled: allPosts.filter(p => p.data.status === 'scheduled').length
+  },
+  brokers: {
+    total: allBrokers.length,
+    trusted: allBrokers.filter(b => !b.data.scamAlert && !b.data.blacklisted && b.data.trustScore >= 70).length,
+    risk: allBrokers.filter(b => b.data.scamAlert || b.data.blacklisted).length
+  }
+};
+
+// Recent activity
+const recentPosts = allPosts
+  .sort((a, b) => (b.data.updateDate || b.data.publishDate).valueOf() - (a.data.updateDate || a.data.publishDate).valueOf())
+  .slice(0, 5);
+
+const scheduledPosts = allPosts
+  .filter(p => p.data.status === 'scheduled')
+  .sort((a, b) => (a.data.scheduledDate || a.data.publishDate).valueOf() - (b.data.scheduledDate || b.data.publishDate).valueOf())
+  .slice(0, 5);
+---
+
+<BaseLayout 
+  title="Panel de Administración - Comunidad Broker"
+  description="Panel de control para gestionar contenido de Comunidad Broker"
+  noindex={true}
+>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Admin Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900">
+              <svg width="24" height="24" viewBox="0 0 32 32" class="text-blue-600">
+                <path fill="currentColor" d="M16 2L3 9v14l13 7 13-7V9L16 2zm0 2.5L25.5 10 16 15.5 6.5 10 16 4.5zM5 11.5l10 5.5v11L5 22.5v-11zm22 0v11L17 28V17l10-5.5z"/>
+              </svg>
+              <span>Admin Panel</span>
+            </a>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Ver sitio web</a>
+            <button class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <p class="text-gray-600 mt-2">Gestiona el contenido y configuración de Comunidad Broker</p>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <a href="/admin/posts/new" class="bg-blue-600 text-white p-6 rounded-lg hover:bg-blue-700 transition-colors text-center">
+          <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+          <h3 class="font-semibold">Nuevo Post</h3>
+          <p class="text-sm opacity-90">Crear artículo</p>
+        </a>
+
+        <a href="/admin/brokers/new" class="bg-green-600 text-white p-6 rounded-lg hover:bg-green-700 transition-colors text-center">
+          <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+          <h3 class="font-semibold">Nuevo Broker</h3>
+          <p class="text-sm opacity-90">Añadir análisis</p>
+        </a>
+
+        <a href="/admin/media" class="bg-purple-600 text-white p-6 rounded-lg hover:bg-purple-700 transition-colors text-center">
+          <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <h3 class="font-semibold">Medios</h3>
+          <p class="text-sm opacity-90">Gestionar archivos</p>
+        </a>
+
+        <a href="/admin/analytics" class="bg-orange-600 text-white p-6 rounded-lg hover:bg-orange-700 transition-colors text-center">
+          <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          <h3 class="font-semibold">Analytics</h3>
+          <p class="text-sm opacity-90">Ver estadísticas</p>
+        </a>
+      </div>
+
+      <!-- Statistics Overview -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Posts Stats -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Artículos</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Total</span>
+              <span class="font-semibold">{stats.posts.total}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Publicados</span>
+              <span class="font-semibold text-green-600">{stats.posts.published}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Borradores</span>
+              <span class="font-semibold text-yellow-600">{stats.posts.draft}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Programados</span>
+              <span class="font-semibold text-blue-600">{stats.posts.scheduled}</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t">
+            <a href="/admin/posts" class="text-blue-600 text-sm font-medium hover:text-blue-800">
+              Gestionar artículos →
+            </a>
+          </div>
+        </div>
+
+        <!-- Brokers Stats -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Brokers</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Total analizados</span>
+              <span class="font-semibold">{stats.brokers.total}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Recomendados</span>
+              <span class="font-semibold text-green-600">{stats.brokers.trusted}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Alto riesgo</span>
+              <span class="font-semibold text-red-600">{stats.brokers.risk}</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t">
+            <a href="/admin/brokers" class="text-blue-600 text-sm font-medium hover:text-blue-800">
+              Gestionar brokers →
+            </a>
+          </div>
+        </div>
+
+        <!-- System Stats -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Sistema</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Última actualización</span>
+              <span class="font-semibold text-sm">Hace 2 horas</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Estado</span>
+              <span class="font-semibold text-green-600">Activo</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Versión</span>
+              <span class="font-semibold">v1.0.0</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t">
+            <a href="/admin/settings" class="text-blue-600 text-sm font-medium hover:text-blue-800">
+              Configuración →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity and Scheduled Posts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Recent Posts -->
+        <div class="bg-white rounded-lg shadow">
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900">Actividad Reciente</h3>
+          </div>
+          <div class="p-6">
+            {recentPosts.length > 0 ? (
+              <div class="space-y-4">
+                {recentPosts.map(post => (
+                  <div class="flex items-center justify-between py-2">
+                    <div>
+                      <h4 class="font-medium text-gray-900 truncate max-w-xs">
+                        {post.data.title}
+                      </h4>
+                      <p class="text-sm text-gray-500">
+                        {post.data.status === 'published' ? 'Publicado' : 
+                         post.data.status === 'draft' ? 'Borrador' : 'Programado'} • 
+                        {(post.data.updateDate || post.data.publishDate).toLocaleDateString('es-ES')}
+                      </p>
+                    </div>
+                    <a 
+                      href={`/admin/posts/${post.slug}`}
+                      class="text-blue-600 text-sm font-medium hover:text-blue-800"
+                    >
+                      Editar
+                    </a>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p class="text-gray-500 text-center py-4">No hay posts recientes</p>
+            )}
+            <div class="mt-4 pt-4 border-t">
+              <a href="/admin/posts" class="text-blue-600 text-sm font-medium hover:text-blue-800">
+                Ver todos los posts →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheduled Posts -->
+        <div class="bg-white rounded-lg shadow">
+          <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold text-gray-900">Posts Programados</h3>
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                {stats.posts.scheduled}
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            {scheduledPosts.length > 0 ? (
+              <div class="space-y-4">
+                {scheduledPosts.map(post => (
+                  <div class="flex items-center justify-between py-2">
+                    <div>
+                      <h4 class="font-medium text-gray-900 truncate max-w-xs">
+                        {post.data.title}
+                      </h4>
+                      <p class="text-sm text-gray-500">
+                        Programado para: {(post.data.scheduledDate || post.data.publishDate).toLocaleDateString('es-ES')}
+                      </p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-green-600 text-sm font-medium hover:text-green-800">
+                        Publicar ya
+                      </button>
+                      <a 
+                        href={`/admin/posts/${post.slug}`}
+                        class="text-blue-600 text-sm font-medium hover:text-blue-800"
+                      >
+                        Editar
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p class="text-gray-500 text-center py-4">No hay posts programados</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Admin-specific styles */
+  .admin-sidebar {
+    min-height: calc(100vh - 4rem);
+  }
+  
+  @media (max-width: 768px) {
+    .admin-sidebar {
+      position: fixed;
+      top: 4rem;
+      left: 0;
+      width: 100%;
+      background: white;
+      z-index: 40;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .admin-sidebar.open {
+      transform: translateX(0);
+    }
+  }
+</style>

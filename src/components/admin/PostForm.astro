@@ -1,0 +1,505 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  post?: CollectionEntry<'posts'>;
+  mode?: 'create' | 'edit';
+}
+
+const { post, mode = 'create' } = Astro.props;
+
+// Get authors for dropdown
+import { getCollection } from 'astro:content';
+const authors = await getCollection('authors');
+
+const categories = [
+  { value: 'noticias', label: 'Noticias' },
+  { value: 'analisis', label: 'Análisis' },
+  { value: 'educacion', label: 'Educación' },
+  { value: 'alertas', label: 'Alertas' }
+];
+
+const statusOptions = [
+  { value: 'draft', label: 'Borrador' },
+  { value: 'scheduled', label: 'Programado' },
+  { value: 'published', label: 'Publicado' }
+];
+---
+
+<form 
+  id="post-form" 
+  class="space-y-8 bg-white shadow-lg rounded-lg p-8"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Main Content -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Title -->
+      <div>
+        <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
+          Título del artículo *
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={post?.data.title || ''}
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+          placeholder="Escribe un título atractivo..."
+          required
+          maxlength="60"
+        />
+        <p class="text-xs text-gray-500 mt-1">
+          <span id="title-count">0</span>/60 caracteres (óptimo para SEO)
+        </p>
+      </div>
+
+      <!-- SEO Title -->
+      <div>
+        <label for="seoTitle" class="block text-sm font-medium text-gray-700 mb-2">
+          Título SEO (opcional)
+        </label>
+        <input
+          type="text"
+          id="seoTitle"
+          name="seoTitle"
+          value={post?.data.seoTitle || ''}
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Si quieres un título diferente para SEO..."
+          maxlength="60"
+        />
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+          Descripción/Resumen *
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Escribe una descripción que enganche al lector..."
+          required
+          minlength="140"
+          maxlength="160"
+        >{post?.data.description || ''}</textarea>
+        <p class="text-xs text-gray-500 mt-1">
+          <span id="desc-count">0</span>/160 caracteres (140-160 recomendado)
+        </p>
+      </div>
+
+      <!-- SEO Description -->
+      <div>
+        <label for="seoDescription" class="block text-sm font-medium text-gray-700 mb-2">
+          Meta Descripción (opcional)
+        </label>
+        <textarea
+          id="seoDescription"
+          name="seoDescription"
+          rows="3"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Descripción específica para buscadores..."
+          maxlength="160"
+        >{post?.data.seoDescription || ''}</textarea>
+      </div>
+
+      <!-- Content -->
+      <div>
+        <label for="content" class="block text-sm font-medium text-gray-700 mb-2">
+          Contenido (Markdown) *
+        </label>
+        <textarea
+          id="content"
+          name="content"
+          rows="20"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+          placeholder="Escribe tu contenido en formato Markdown..."
+          required
+        >{post?.body || ''}</textarea>
+        <div class="flex justify-between items-center mt-2">
+          <p class="text-xs text-gray-500">
+            Usa Markdown para formatear. Ejemplo: **negrita**, *cursiva*, ## Subtítulo
+          </p>
+          <button 
+            type="button" 
+            id="preview-btn"
+            class="text-blue-600 text-sm font-medium hover:text-blue-800"
+          >
+            👁️ Vista previa
+          </button>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div>
+        <label for="tags" class="block text-sm font-medium text-gray-700 mb-2">
+          Etiquetas
+        </label>
+        <input
+          type="text"
+          id="tags"
+          name="tags"
+          value={post?.data.tags?.join(', ') || ''}
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="forex, trading, análisis (separadas por comas)"
+        />
+        <p class="text-xs text-gray-500 mt-1">
+          Separa las etiquetas con comas. Máximo 8 etiquetas.
+        </p>
+      </div>
+
+      <!-- Warnings -->
+      <div>
+        <label for="warnings" class="block text-sm font-medium text-gray-700 mb-2">
+          Advertencias (opcional)
+        </label>
+        <textarea
+          id="warnings"
+          name="warnings"
+          rows="3"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Una advertencia por línea..."
+        >{post?.data.warnings?.join('\n') || ''}</textarea>
+        <p class="text-xs text-gray-500 mt-1">
+          Cada línea será una advertencia separada.
+        </p>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="space-y-6">
+      <!-- Publish Settings -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Publicación</h3>
+        
+        <!-- Status -->
+        <div class="mb-4">
+          <label for="status" class="block text-sm font-medium text-gray-700 mb-2">
+            Estado
+          </label>
+          <select
+            id="status"
+            name="status"
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          >
+            {statusOptions.map(option => (
+              <option 
+                value={option.value} 
+                selected={post?.data.status === option.value}
+              >
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Publish Date -->
+        <div class="mb-4">
+          <label for="publishDate" class="block text-sm font-medium text-gray-700 mb-2">
+            Fecha de publicación
+          </label>
+          <input
+            type="datetime-local"
+            id="publishDate"
+            name="publishDate"
+            value={post?.data.publishDate?.toISOString().slice(0, 16) || new Date().toISOString().slice(0, 16)}
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Scheduled Date (conditional) -->
+        <div class="mb-4" id="scheduled-date" style="display: none;">
+          <label for="scheduledDate" class="block text-sm font-medium text-gray-700 mb-2">
+            Programar para
+          </label>
+          <input
+            type="datetime-local"
+            id="scheduledDate"
+            name="scheduledDate"
+            value={post?.data.scheduledDate?.toISOString().slice(0, 16) || ''}
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Featured -->
+        <div class="mb-4">
+          <label class="flex items-center">
+            <input
+              type="checkbox"
+              name="featured"
+              value="true"
+              checked={post?.data.featured || false}
+              class="rounded text-blue-600 mr-2"
+            />
+            <span class="text-sm font-medium text-gray-700">Artículo destacado</span>
+          </label>
+        </div>
+
+        <!-- Priority -->
+        <div class="mb-4">
+          <label for="priority" class="block text-sm font-medium text-gray-700 mb-2">
+            Prioridad (0-10)
+          </label>
+          <input
+            type="number"
+            id="priority"
+            name="priority"
+            min="0"
+            max="10"
+            value={post?.data.priority || 5}
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </div>
+
+      <!-- Post Settings -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Configuración</h3>
+
+        <!-- Category -->
+        <div class="mb-4">
+          <label for="category" class="block text-sm font-medium text-gray-700 mb-2">
+            Categoría *
+          </label>
+          <select
+            id="category"
+            name="category"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Selecciona una categoría</option>
+            {categories.map(cat => (
+              <option 
+                value={cat.value} 
+                selected={post?.data.category === cat.value}
+              >
+                {cat.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Author -->
+        <div class="mb-4">
+          <label for="author" class="block text-sm font-medium text-gray-700 mb-2">
+            Autor *
+          </label>
+          <select
+            id="author"
+            name="author"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Selecciona un autor</option>
+            {authors.map(author => (
+              <option 
+                value={author.id} 
+                selected={post?.data.author === author.id}
+              >
+                {author.data.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Reading Time -->
+        <div class="mb-4">
+          <label for="readingTime" class="block text-sm font-medium text-gray-700 mb-2">
+            Tiempo de lectura (minutos)
+          </label>
+          <input
+            type="number"
+            id="readingTime"
+            name="readingTime"
+            min="1"
+            value={post?.data.readingTime || 5}
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          />
+          <p class="text-xs text-gray-500 mt-1">
+            Se calcula automáticamente, pero puedes ajustarlo
+          </p>
+        </div>
+      </div>
+
+      <!-- Featured Image -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Imagen Principal</h3>
+        
+        <!-- Image Upload -->
+        <div class="mb-4">
+          <label for="image" class="block text-sm font-medium text-gray-700 mb-2">
+            Subir imagen
+          </label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+          />
+          <p class="text-xs text-gray-500 mt-1">
+            Formato recomendado: 1200x630px (16:9)
+          </p>
+        </div>
+
+        <!-- Image Alt Text -->
+        <div class="mb-4">
+          <label for="imageAlt" class="block text-sm font-medium text-gray-700 mb-2">
+            Texto alternativo *
+          </label>
+          <input
+            type="text"
+            id="imageAlt"
+            name="imageAlt"
+            value={post?.data.image?.alt || ''}
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+            placeholder="Describe la imagen para accesibilidad..."
+            required
+          />
+        </div>
+
+        <!-- Image Caption -->
+        <div class="mb-4">
+          <label for="imageCaption" class="block text-sm font-medium text-gray-700 mb-2">
+            Pie de imagen (opcional)
+          </label>
+          <input
+            type="text"
+            id="imageCaption"
+            name="imageCaption"
+            value={post?.data.image?.caption || ''}
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+            placeholder="Descripción que aparece bajo la imagen"
+          />
+        </div>
+      </div>
+
+      <!-- SEO Advanced -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">SEO Avanzado</h3>
+        
+        <!-- No Index -->
+        <div class="mb-4">
+          <label class="flex items-center">
+            <input
+              type="checkbox"
+              name="noindex"
+              value="true"
+              checked={post?.data.noindex || false}
+              class="rounded text-blue-600 mr-2"
+            />
+            <span class="text-sm font-medium text-gray-700">No indexar (noindex)</span>
+          </label>
+          <p class="text-xs text-gray-500 mt-1">
+            Evita que los buscadores indexen este contenido
+          </p>
+        </div>
+
+        <!-- Canonical URL -->
+        <div class="mb-4">
+          <label for="canonical" class="block text-sm font-medium text-gray-700 mb-2">
+            URL canónica (opcional)
+          </label>
+          <input
+            type="url"
+            id="canonical"
+            name="canonical"
+            value={post?.data.canonical || ''}
+            class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+            placeholder="https://..."
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Actions -->
+  <div class="flex items-center justify-between pt-8 border-t border-gray-200">
+    <div class="flex space-x-4">
+      <a 
+        href="/admin/posts" 
+        class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+      >
+        Cancelar
+      </a>
+      <button
+        type="button"
+        id="save-draft"
+        class="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+      >
+        💾 Guardar Borrador
+      </button>
+    </div>
+    <button
+      type="submit"
+      class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+    >
+      {mode === 'create' ? '🚀 Crear Artículo' : '✏️ Actualizar Artículo'}
+    </button>
+  </div>
+</form>
+
+<script>
+  // Character counters
+  const titleInput = document.getElementById('title') as HTMLInputElement;
+  const titleCount = document.getElementById('title-count');
+  const descInput = document.getElementById('description') as HTMLTextAreaElement;
+  const descCount = document.getElementById('desc-count');
+
+  function updateCounter(input: HTMLInputElement | HTMLTextAreaElement, counter: HTMLElement | null) {
+    if (counter) {
+      counter.textContent = input.value.length.toString();
+      const max = parseInt(input.getAttribute('maxlength') || '0');
+      if (max > 0 && input.value.length > max * 0.9) {
+        counter.parentElement!.classList.add('text-orange-500');
+      } else {
+        counter.parentElement!.classList.remove('text-orange-500');
+      }
+    }
+  }
+
+  titleInput?.addEventListener('input', () => updateCounter(titleInput, titleCount));
+  descInput?.addEventListener('input', () => updateCounter(descInput, descCount));
+  
+  // Initial count
+  updateCounter(titleInput, titleCount);
+  updateCounter(descInput, descCount);
+
+  // Show/hide scheduled date based on status
+  const statusSelect = document.getElementById('status') as HTMLSelectElement;
+  const scheduledDiv = document.getElementById('scheduled-date') as HTMLDivElement;
+
+  function toggleScheduledDate() {
+    if (statusSelect.value === 'scheduled') {
+      scheduledDiv.style.display = 'block';
+    } else {
+      scheduledDiv.style.display = 'none';
+    }
+  }
+
+  statusSelect?.addEventListener('change', toggleScheduledDate);
+  toggleScheduledDate(); // Initial state
+
+  // Save draft functionality
+  const saveDraftBtn = document.getElementById('save-draft');
+  saveDraftBtn?.addEventListener('click', () => {
+    const statusInput = document.getElementById('status') as HTMLSelectElement;
+    statusInput.value = 'draft';
+    (document.getElementById('post-form') as HTMLFormElement).submit();
+  });
+
+  // Auto-calculate reading time
+  const contentTextarea = document.getElementById('content') as HTMLTextAreaElement;
+  const readingTimeInput = document.getElementById('readingTime') as HTMLInputElement;
+  
+  function calculateReadingTime() {
+    const words = contentTextarea.value.split(/\s+/).length;
+    const readingTime = Math.max(1, Math.ceil(words / 200)); // 200 words per minute
+    readingTimeInput.value = readingTime.toString();
+  }
+
+  contentTextarea?.addEventListener('input', calculateReadingTime);
+</script>

@@ -1,0 +1,50 @@
+---
+export interface Props {
+  mobile?: boolean;
+}
+
+const { mobile = false } = Astro.props;
+
+const navItems = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Brokers', href: '/brokers' },
+  { name: 'Educación', href: '/categoria/educacion' },
+  { name: 'Alertas', href: '/categoria/alertas' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<ul class={mobile ? 'space-y-1' : 'flex space-x-8'} role="list">
+  {navItems.map(item => {
+    const isActive = currentPath === item.href || 
+                    (item.href !== '/' && currentPath.startsWith(item.href));
+    
+    return (
+      <li>
+        <a
+          href={item.href}
+          class={`
+            ${mobile 
+              ? 'block px-3 py-2 rounded-md text-base font-medium' 
+              : 'text-sm font-medium'
+            }
+            ${isActive 
+              ? mobile 
+                ? 'bg-blue-100 text-blue-700' 
+                : 'text-blue-600 border-b-2 border-blue-600 pb-1'
+              : mobile
+                ? 'text-gray-700 hover:bg-gray-100 hover:text-blue-600'
+                : 'text-gray-700 hover:text-blue-600'
+            }
+            transition-colors
+          `}
+          aria-current={isActive ? 'page' : undefined}
+        >
+          {item.name}
+        </a>
+      </li>
+    );
+  })}
+</ul>

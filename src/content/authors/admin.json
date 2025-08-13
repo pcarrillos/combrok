@@ -1,0 +1,11 @@
+{
+  "name": "Equipo Editorial",
+  "bio": "Equipo de analistas financieros y expertos en trading con más de 10 años de experiencia en los mercados financieros. Nos especializamos en análisis independientes de brokers y educación financiera.",
+  "avatar": "/images/admin-avatar.jpg",
+  "role": "Editor Principal",
+  "social": {
+    "email": "editorial@comunidadbroker.com",
+    "linkedin": "https://linkedin.com/company/comunidad-broker"
+  },
+  "active": true
+}
