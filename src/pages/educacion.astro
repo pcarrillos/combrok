@@ -1,0 +1,507 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CATEGORIES, TOPICS } from '@/utils/constants';
+
+const seo = {
+  title: 'Educación Financiera | Comunidad Broker',
+  description: 'Centro de educación financiera y trading. Guías, tutoriales y recursos para aprender sobre mercados financieros, brokers y estrategias de inversión.',
+  canonical: '/educacion'
+};
+---
+
+<BaseLayout seo={seo}>
+  <div class="container mx-auto px-4 py-12">
+    <!-- Hero Section -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        📚 Centro de Educación Financiera
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+        Aprende trading e inversión con nuestros recursos educativos gratuitos. Desde conceptos básicos hasta estrategias avanzadas.
+      </p>
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto">
+        <p class="text-blue-800">
+          <strong>🎯 Objetivo:</strong> Proporcionarte el conocimiento necesario para tomar decisiones de inversión informadas y gestionar riesgos adecuadamente.
+        </p>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="mb-12">
+      <div class="border-b border-gray-200">
+        <nav class="-mb-px flex space-x-8" aria-label="Secciones educativas">
+          <a href="#conceptos-basicos" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+            Conceptos Básicos
+          </a>
+          <a href="#tipos-instrumentos" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+            Instrumentos Financieros
+          </a>
+          <a href="#gestion-riesgo" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+            Gestión de Riesgo
+          </a>
+          <a href="#elegir-broker" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+            Elegir Broker
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Conceptos Básicos -->
+    <section id="conceptos-basicos" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">🏗️ Conceptos Básicos</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Qué es el Trading -->
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+              <span class="text-blue-600 text-xl">💹</span>
+            </div>
+            <h3 class="font-semibold text-gray-900">¿Qué es el Trading?</h3>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">
+            Compraventa de instrumentos financieros para obtener beneficios a corto o medio plazo.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Diferencia entre trading e inversión</li>
+            <li>• Tipos de análisis (técnico/fundamental)</li>
+            <li>• Marcos temporales</li>
+          </ul>
+        </div>
+
+        <!-- Mercados Financieros -->
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+              <span class="text-green-600 text-xl">🌍</span>
+            </div>
+            <h3 class="font-semibold text-gray-900">Mercados Financieros</h3>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">
+            Entornos donde se negocian diferentes tipos de activos financieros.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Mercado de divisas (Forex)</li>
+            <li>• Mercado de acciones</li>
+            <li>• Mercado de commodities</li>
+            <li>• Criptomonedas</li>
+          </ul>
+        </div>
+
+        <!-- Apalancamiento -->
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+              <span class="text-red-600 text-xl">⚖️</span>
+            </div>
+            <h3 class="font-semibold text-gray-900">Apalancamiento</h3>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">
+            Herramienta que amplifica tanto ganancias como pérdidas potenciales.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Cómo funciona el apalancamiento</li>
+            <li>• Riesgos y beneficios</li>
+            <li>• Cálculo de margen</li>
+          </ul>
+        </div>
+
+        <!-- Spread y Comisiones -->
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+              <span class="text-purple-600 text-xl">💰</span>
+            </div>
+            <h3 class="font-semibold text-gray-900">Costes de Trading</h3>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">
+            Diferentes tipos de costes asociados al trading.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Spread bid/ask</li>
+            <li>• Comisiones por operación</li>
+            <li>• Costes de financiación overnight</li>
+            <li>• Otros gastos ocultos</li>
+          </ul>
+        </div>
+
+        <!-- Órdenes de Trading -->
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
+              <span class="text-indigo-600 text-xl">📋</span>
+            </div>
+            <h3 class="font-semibold text-gray-900">Tipos de Órdenes</h3>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">
+            Diferentes formas de ejecutar operaciones en el mercado.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Market Orders (a mercado)</li>
+            <li>• Limit Orders (pendientes)</li>
+            <li>• Stop Loss y Take Profit</li>
+            <li>• Trailing Stop</li>
+          </ul>
+        </div>
+
+        <!-- Psicología del Trading -->
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+              <span class="text-yellow-600 text-xl">🧠</span>
+            </div>
+            <h3 class="font-semibold text-gray-900">Psicología del Trading</h3>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">
+            Aspectos emocionales y psicológicos del trading.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• Control emocional</li>
+            <li>• Sesgos cognitivos comunes</li>
+            <li>• Disciplina y paciencia</li>
+            <li>• Plan de trading</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instrumentos Financieros -->
+    <section id="tipos-instrumentos" class="mb-16">
+      <h2 class="text-3xl font-bold text-corporate-primary mb-8">📊 Instrumentos Financieros</h2>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        {Object.values(TOPICS).map(topic => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6">
+            <div class="flex items-center mb-4">
+              <span class="text-2xl mr-3">{topic.icon}</span>
+              <div>
+                <h3 class="font-semibold text-gray-900 text-lg">{topic.name}</h3>
+                <p class="text-gray-600 text-sm">{topic.description}</p>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div>
+                <h4 class="font-medium text-gray-900 mb-2">Características:</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  {topic.slug === 'forex' && (
+                    <>
+                      <li>• Mercado más líquido del mundo</li>
+                      <li>• Operativo 24/5</li>
+                      <li>• Pares de divisas principales y menores</li>
+                      <li>• Influenciado por políticas monetarias</li>
+                    </>
+                  )}
+                  {topic.slug === 'criptomonedas' && (
+                    <>
+                      <li>• Mercado descentralizado</li>
+                      <li>• Alta volatilidad</li>
+                      <li>• Operativo 24/7</li>
+                      <li>• Tecnología blockchain</li>
+                    </>
+                  )}
+                  {topic.slug === 'cfds' && (
+                    <>
+                      <li>• Contratos por diferencia</li>
+                      <li>• Apalancamiento disponible</li>
+                      <li>• No posees el activo subyacente</li>
+                      <li>• Operaciones largas y cortas</li>
+                    </>
+                  )}
+                  {topic.slug === 'acciones' && (
+                    <>
+                      <li>• Participación en empresas</li>
+                      <li>• Dividendos potenciales</li>
+                      <li>• Análisis fundamental importante</li>
+                      <li>• Diferentes mercados geográficos</li>
+                    </>
+                  )}
+                  {topic.slug === 'commodities' && (
+                    <>
+                      <li>• Materias primas físicas</li>
+                      <li>• Hedge contra inflación</li>
+                      <li>• Influenciados por oferta/demanda</li>
+                      <li>• Metales, energía, agricultura</li>
+                    </>
+                  )}
+                </ul>
+              </div>
+              <a href={`/tema/${topic.slug}`} class="inline-flex items-center text-blue-600 text-sm font-medium hover:text-blue-800">
+                Ver contenido de {topic.name} →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Gestión de Riesgo -->
+    <section id="gestion-riesgo" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">🛡️ Gestión de Riesgo</h2>
+      
+      <div class="bg-red-50 border-l-4 border-red-500 p-6 mb-8">
+        <h3 class="font-semibold text-red-800 mb-2">⚠️ Advertencia Fundamental</h3>
+        <p class="text-red-700">
+          La gestión de riesgo es el aspecto más importante del trading. Un buen gestor de riesgo puede ser rentable incluso con una tasa de acierto del 40%.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-4">Principios Fundamentales</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">✓</span>
+                <div>
+                  <strong>Nunca arriesgues más del 1-2%</strong> de tu capital por operación
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">✓</span>
+                <div>
+                  <strong>Usa siempre Stop Loss</strong> para limitar pérdidas
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">✓</span>
+                <div>
+                  <strong>Diversifica tu cartera</strong> entre diferentes activos
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2">✓</span>
+                <div>
+                  <strong>Mantén una ratio riesgo/beneficio</strong> favorable (mín. 1:2)
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-4">Cálculo de Posición</h3>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <p class="text-sm text-gray-600 mb-2">Fórmula básica:</p>
+              <code class="text-sm bg-white p-2 rounded border">
+                Tamaño = (Capital × %Riesgo) ÷ (Precio Entrada - Stop Loss)
+              </code>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-4">Errores Comunes</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <span class="text-red-500 mr-2">✗</span>
+                <div>Mover el Stop Loss en contra cuando la operación va mal</div>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-2">✗</span>
+                <div>Arriesgar más dinero después de una pérdida ("revenge trading")</div>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-2">✗</span>
+                <div>No tener un plan de salida definido</div>
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-2">✗</span>
+                <div>Sobrepalancarse en momentos de alta volatilidad</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h4 class="font-medium text-blue-900 mb-2">💡 Regla de Oro</h4>
+            <p class="text-blue-800 text-sm">
+              "Corta las pérdidas rápido y deja correr las ganancias" - Esta regla simple puede transformar tu trading.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elegir Broker -->
+    <section id="elegir-broker" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">🏢 Cómo Elegir un Broker</h2>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <div class="space-y-8">
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-4">Criterios Esenciales</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">🛡️ Regulación y Seguridad</h4>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    <li>• Reguladores reconocidos (FCA, CySEC, ASIC, CNMV)</li>
+                    <li>• Segregación de fondos de clientes</li>
+                    <li>• Seguro de depósitos</li>
+                    <li>• Auditorías regulares</li>
+                  </ul>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">💰 Costes y Comisiones</h4>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    <li>• Spreads competitivos</li>
+                    <li>• Comisiones transparentes</li>
+                    <li>• Costes de financiación overnight</li>
+                    <li>• Tarifas de depósito/retiro</li>
+                  </ul>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">🖥️ Plataforma de Trading</h4>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    <li>• Interfaz intuitiva y estable</li>
+                    <li>• Herramientas de análisis</li>
+                    <li>• Ejecución rápida de órdenes</li>
+                    <li>• App móvil completa</li>
+                  </ul>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">📞 Soporte al Cliente</h4>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    <li>• Soporte 24/5 en español</li>
+                    <li>• Múltiples canales de contacto</li>
+                    <li>• Tiempos de respuesta rápidos</li>
+                    <li>• Personal cualificado</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-4">Red Flags (Señales de Alarma)</h3>
+              <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                <ul class="text-red-700 space-y-2">
+                  <li>🚩 Promesas de "ganancias garantizadas" o rendimientos irreales</li>
+                  <li>🚩 Presión para depositar grandes cantidades iniciales</li>
+                  <li>🚩 Falta de información sobre regulación</li>
+                  <li>🚩 Dificultades para retirar fondos</li>
+                  <li>🚩 Spreads anormalmente bajos (posibles costes ocultos)</li>
+                  <li>🚩 Solicitudes de información bancaria por canales no seguros</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 class="font-semibold text-blue-900 mb-4">🔍 Nuestros Análisis</h3>
+            <p class="text-blue-800 text-sm mb-4">
+              Analizamos brokers con criterios objetivos y transparentes.
+            </p>
+            <div class="space-y-3">
+              <a href="/brokers" class="block bg-blue-600 text-white text-center py-2 px-4 rounded hover:bg-blue-700 transition-colors">
+                Ver Análisis de Brokers
+              </a>
+              <a href="/categoria/reviews" class="block border border-blue-600 text-blue-600 text-center py-2 px-4 rounded hover:bg-blue-50 transition-colors">
+                Leer Reviews Detalladas
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <h4 class="font-medium text-yellow-900 mb-2">⏰ Antes de Empezar</h4>
+            <p class="text-yellow-800 text-sm">
+              Practica con una cuenta demo durante al menos 3 meses antes de operar con dinero real.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categorías Educativas -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">📚 Explora por Categorías</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Object.values(CATEGORIES).filter(cat => cat.slug === 'educacion' || cat.slug === 'analisis').map(category => (
+          <a href={`/categoria/${category.slug}`} class="block bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow group">
+            <div class="flex items-center mb-3">
+              <span class="text-2xl mr-3">{category.icon}</span>
+              <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">{category.name}</h3>
+            </div>
+            <p class="text-gray-600 text-sm">{category.description}</p>
+          </a>
+        ))}
+        
+        <a href="/categoria/alertas" class="block bg-red-50 border border-red-200 rounded-lg p-6 hover:shadow-md transition-shadow group">
+          <div class="flex items-center mb-3">
+            <span class="text-2xl mr-3">⚠️</span>
+            <h3 class="font-semibold text-red-900 group-hover:text-red-700 transition-colors">Alertas de Seguridad</h3>
+          </div>
+          <p class="text-red-700 text-sm">Advertencias sobre estafas y brokers problemáticos</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-center text-white">
+      <h2 class="text-2xl font-bold mb-4">¿Listo para Empezar tu Educación Financiera?</h2>
+      <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+        Continúa aprendiendo con nuestros artículos especializados y mantente actualizado con las últimas tendencias del mercado.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/blog" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors">
+          Leer Últimos Artículos
+        </a>
+        <a href="/categoria/educacion" class="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-600 transition-colors">
+          Ver Todo el Contenido Educativo
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  // Smooth scrolling for navigation tabs
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Update active tab
+        document.querySelectorAll('nav a').forEach(link => {
+          link.classList.remove('border-blue-500', 'text-blue-600');
+          link.classList.add('border-transparent', 'text-gray-500');
+        });
+        this.classList.remove('border-transparent', 'text-gray-500');
+        this.classList.add('border-blue-500', 'text-blue-600');
+      }
+    });
+  });
+
+  // Update active tab on scroll
+  window.addEventListener('scroll', () => {
+    const sections = ['conceptos-basicos', 'tipos-instrumentos', 'gestion-riesgo', 'elegir-broker'];
+    const navLinks = document.querySelectorAll('nav a');
+    
+    sections.forEach((section, index) => {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          navLinks.forEach(link => {
+            link.classList.remove('border-blue-500', 'text-blue-600');
+            link.classList.add('border-transparent', 'text-gray-500');
+          });
+          if (navLinks[index]) {
+            navLinks[index].classList.remove('border-transparent', 'text-gray-500');
+            navLinks[index].classList.add('border-blue-500', 'text-blue-600');
+          }
+        }
+      }
+    });
+  });
+</script>

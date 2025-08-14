@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Términos y Condiciones | Comunidad Broker',
+  description: 'Términos y condiciones de uso del portal Comunidad Broker. Información sobre el uso del sitio web y sus servicios.',
+  canonical: '/legal/terminos-y-condiciones'
+};
+---
+
+<BaseLayout seo={seo}>
+  <div class="container mx-auto px-4 py-12 max-w-4xl">
+    <div class="prose prose-lg mx-auto">
+      <h1>Términos y Condiciones</h1>
+      
+      <p class="lead text-gray-600">
+        Última actualización: {new Date().toLocaleDateString('es-ES')}
+      </p>
+
+      <h2>1. Aceptación de los Términos</h2>
+      <p>
+        Al acceder y utilizar el sitio web Comunidad Broker ("el Sitio"), usted acepta estar legalmente vinculado por estos Términos y Condiciones. Si no está de acuerdo con alguno de estos términos, no debe utilizar nuestro sitio.
+      </p>
+
+      <h2>2. Descripción del Servicio</h2>
+      <p>
+        Comunidad Broker es un portal independiente que proporciona:
+      </p>
+      <ul>
+        <li>Análisis y reseñas de brokers financieros</li>
+        <li>Contenido educativo sobre trading e inversiones</li>
+        <li>Noticias y análisis del mercado financiero</li>
+        <li>Información sobre regulación y seguridad en trading</li>
+      </ul>
+
+      <h2>3. Naturaleza de la Información</h2>
+      <h3>3.1 No Asesoramiento Financiero</h3>
+      <p>
+        La información proporcionada en este sitio web es únicamente para fines educativos e informativos. <strong>No constituye asesoramiento financiero, de inversión o de trading personalizado</strong>. Siempre consulte con un asesor financiero profesional antes de tomar decisiones de inversión.
+      </p>
+
+      <h3>3.2 Análisis Independientes</h3>
+      <p>
+        Nuestros análisis de brokers se basan en investigación independiente y criterios objetivos. Sin embargo, las opiniones expresadas son subjetivas y pueden no reflejar su experiencia personal con dichos servicios.
+      </p>
+
+      <h2>4. Riesgos Financieros</h2>
+      <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6">
+        <p class="text-red-700">
+          <strong>ADVERTENCIA DE RIESGO:</strong> El trading de CFDs, forex y otros instrumentos financieros conlleva un alto nivel de riesgo y puede no ser adecuado para todos los inversores. Es posible perder toda su inversión inicial.
+        </p>
+      </div>
+
+      <h2>5. Uso Aceptable del Sitio</h2>
+      <h3>5.1 Usos Permitidos</h3>
+      <ul>
+        <li>Acceder y leer el contenido para fines informativos</li>
+        <li>Compartir enlaces a nuestros artículos con atribución apropiada</li>
+        <li>Utilizar la información para su educación personal</li>
+      </ul>
+
+      <h3>5.2 Usos Prohibidos</h3>
+      <ul>
+        <li>Reproducir o redistribuir nuestro contenido sin autorización</li>
+        <li>Utilizar el sitio para actividades ilegales o fraudulentas</li>
+        <li>Intentar acceder a áreas restringidas del sitio</li>
+        <li>Interferir con el funcionamiento del sitio</li>
+      </ul>
+
+      <h2>6. Propiedad Intelectual</h2>
+      <p>
+        Todo el contenido del sitio web, incluyendo pero no limitado a textos, gráficos, logotipos, imágenes y software, es propiedad de Comunidad Broker y está protegido por las leyes de derechos de autor y propiedad intelectual.
+      </p>
+
+      <h2>7. Enlaces a Terceros</h2>
+      <p>
+        Nuestro sitio puede contener enlaces a sitios web de terceros, incluyendo brokers y otros servicios financieros. No somos responsables del contenido, políticas de privacidad o prácticas de estos sitios externos.
+      </p>
+
+      <h2>8. Afiliaciones y Compensación</h2>
+      <p>
+        Comunidad Broker puede recibir compensación de algunos brokers cuando los usuarios se registran a través de nuestros enlaces. Esta compensación no influye en nuestros análisis independientes ni en nuestras opiniones.
+      </p>
+
+      <h2>9. Limitación de Responsabilidad</h2>
+      <p>
+        En la máxima medida permitida por la ley, Comunidad Broker no será responsable de:
+      </p>
+      <ul>
+        <li>Pérdidas financieras resultantes del uso de la información del sitio</li>
+        <li>Errores u omisiones en el contenido</li>
+        <li>Interrupciones en el servicio del sitio web</li>
+        <li>Acciones de brokers o terceros mencionados en el sitio</li>
+      </ul>
+
+      <h2>10. Exención de Garantías</h2>
+      <p>
+        El sitio web se proporciona "tal como está" sin garantías de ningún tipo. No garantizamos la exactitud, completitud o actualidad de la información proporcionada.
+      </p>
+
+      <h2>11. Modificaciones de los Términos</h2>
+      <p>
+        Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web. Es su responsabilidad revisar periódicamente estos términos.
+      </p>
+
+      <h2>12. Terminación</h2>
+      <p>
+        Podemos suspender o terminar su acceso al sitio web en cualquier momento, con o sin causa, con o sin notificación previa.
+      </p>
+
+      <h2>13. Ley Aplicable</h2>
+      <p>
+        Estos términos se rigen por las leyes de España. Cualquier disputa se resolverá en los tribunales competentes de España.
+      </p>
+
+      <h2>14. Severabilidad</h2>
+      <p>
+        Si alguna disposición de estos términos se considera inválida o inaplicable, las disposiciones restantes seguirán siendo válidas y aplicables.
+      </p>
+
+      <h2>15. Contacto</h2>
+      <p>
+        Si tiene preguntas sobre estos Términos y Condiciones, puede contactarnos en:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:legal@comunidadbroker.com">legal@comunidadbroker.com</a></li>
+        <li>Formulario de contacto: <a href="/contacto">/contacto</a></li>
+      </ul>
+
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">
+        <p class="text-blue-700">
+          <strong>Nota:</strong> Estos términos están diseñados para ser justos tanto para los usuarios como para Comunidad Broker. Si tiene alguna pregunta o preocupación, no dude en contactarnos.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

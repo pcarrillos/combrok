@@ -34,29 +34,81 @@ const topBrokers = allBrokers
   
   <main id="main-content">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+    <section class="bg-white py-24">
       <div class="container">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Tu guía independiente en el
-            <span class="text-blue-600">mundo del trading</span>
+        <div class="max-w-5xl mx-auto text-center">
+          <!-- Trust badges -->
+          <div class="flex justify-center items-center gap-8 mb-12">
+            <div class="flex items-center bg-gray-50 px-4 py-2 rounded-lg">
+              <svg class="w-5 h-5 mr-2 text-corporate-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm font-medium text-corporate-primary">Análisis Independientes</span>
+            </div>
+            <div class="flex items-center bg-gray-50 px-4 py-2 rounded-lg">
+              <svg class="w-5 h-5 mr-2 text-corporate-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm font-medium text-corporate-primary">Información Verificada</span>
+            </div>
+            <div class="flex items-center bg-gray-50 px-4 py-2 rounded-lg">
+              <svg class="w-5 h-5 mr-2 text-corporate-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span class="text-sm font-medium text-corporate-primary">Educación Gratuita</span>
+            </div>
+          </div>
+
+          <h1 class="text-5xl md:text-6xl font-bold text-corporate-primary mb-8 leading-tight">
+            Tu Fuente Confiable de
+            <span class="block text-corporate-secondary">
+              Información Financiera
+            </span>
           </h1>
-          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-            Análisis honestos de brokers, noticias actualizadas y educación financiera 
-            para tomar las mejores decisiones de inversión.
+          
+          <p class="text-xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto">
+            Análisis objetivos de brokers, educación financiera profesional y noticias actualizadas 
+            para tomar decisiones de inversión informadas y seguras.
           </p>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 max-w-3xl mx-auto">
+            <div class="text-center bg-gray-50 rounded-lg py-6 px-4">
+              <div class="text-3xl font-bold text-corporate-primary mb-2">50+</div>
+              <div class="text-sm text-gray-700 font-medium">Brokers Analizados</div>
+            </div>
+            <div class="text-center bg-gray-50 rounded-lg py-6 px-4">
+              <div class="text-3xl font-bold text-corporate-primary mb-2">100%</div>
+              <div class="text-sm text-gray-700 font-medium">Independientes</div>
+            </div>
+            <div class="text-center bg-gray-50 rounded-lg py-6 px-4">
+              <div class="text-3xl font-bold text-corporate-primary mb-2">24/7</div>
+              <div class="text-sm text-gray-700 font-medium">Monitoreo</div>
+            </div>
+            <div class="text-center bg-gray-50 rounded-lg py-6 px-4">
+              <div class="text-3xl font-bold text-corporate-primary mb-2">0€</div>
+              <div class="text-sm text-gray-700 font-medium">Costo para Ti</div>
+            </div>
+          </div>
+          
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="/brokers" 
-              class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              class="bg-corporate-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-corporate-secondary transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              Ver Brokers
+              🏢 Explorar Brokers
             </a>
             <a 
-              href="/blog" 
-              class="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              href="/educacion" 
+              class="border-2 border-corporate-primary text-corporate-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-corporate-primary hover:text-white transition-all duration-300"
             >
-              Leer Blog
+              📚 Centro Educativo
+            </a>
+            <a 
+              href="/categoria/alertas" 
+              class="bg-secondary-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary-600 transition-all duration-300 shadow-md"
+            >
+              🚨 Alertas de Seguridad
             </a>
           </div>
         </div>
@@ -65,51 +117,58 @@ const topBrokers = allBrokers
 
     <!-- Featured Posts -->
     {featuredPosts.length > 0 && (
-      <section class="py-16 bg-white">
+      <section class="py-20 bg-gray-50">
         <div class="container">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Artículos Destacados</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-              Los análisis más importantes y noticias relevantes del mercado financiero
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              Contenido Destacado
+            </div>
+            <h2 class="text-4xl font-bold text-corporate-primary mb-6">Análisis Más Importantes</h2>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+              Nuestros análisis más leídos y noticias que están impactando el mercado financiero
             </p>
           </div>
           <div class="grid md:grid-cols-3 gap-8">
             {featuredPosts.map(post => (
-              <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div class="aspect-video bg-gray-100">
+              <article class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2">
+                <div class="aspect-video bg-gradient-to-br from-primary-100 to-primary-200 relative overflow-hidden">
                   <img 
                     src={post.data.image.src.src} 
                     alt={post.data.image.alt}
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                <div class="p-6">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">
+                <div class="p-8">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide">
                       {post.data.category}
                     </span>
-                    <span class="text-gray-500 text-sm">
-                      {post.data.readingTime} min lectura
+                    <span class="text-gray-600 text-sm font-medium">
+                      ⏱️ {post.data.readingTime} min lectura
                     </span>
                   </div>
-                  <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                    <a href={`/blog/${post.slug}`} class="hover:text-blue-600 transition-colors">
+                  <h3 class="text-2xl font-bold text-corporate-primary mb-4 line-clamp-2 leading-tight">
+                    <a href={`/blog/${post.slug}`} class="hover:text-primary-600 transition-colors">
                       {post.data.title}
                     </a>
                   </h3>
-                  <p class="text-gray-600 mb-4 line-clamp-3">
+                  <p class="text-gray-700 mb-6 line-clamp-3 text-lg leading-relaxed">
                     {post.data.description}
                   </p>
                   <div class="flex items-center justify-between">
-                    <span class="text-sm text-gray-500">
-                      {post.data.publishDate.toLocaleDateString('es-ES')}
+                    <span class="text-sm text-gray-600 font-medium">
+                      📅 {post.data.publishDate.toLocaleDateString('es-ES')}
                     </span>
                     <a 
                       href={`/blog/${post.slug}`}
-                      class="text-blue-600 text-sm font-medium hover:text-blue-800"
+                      class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors"
                     >
-                      Leer más →
+                      Leer Artículo →
                     </a>
                   </div>
                 </div>
@@ -122,80 +181,101 @@ const topBrokers = allBrokers
 
     <!-- Top Brokers -->
     {topBrokers.length > 0 && (
-      <section class="py-16 bg-gray-50">
+      <section class="py-20 bg-white">
         <div class="container">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Brokers Mejor Valorados</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-              Nuestra selección de brokers con las mejores calificaciones y mayor confiabilidad
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+              </svg>
+              Brokers Verificados
+            </div>
+            <h2 class="text-4xl font-bold text-corporate-primary mb-6">Brokers Mejor Valorados</h2>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+              Nuestra selección cuidadosa de brokers regulados con las mejores calificaciones y máxima confiabilidad
             </p>
           </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {topBrokers.map(broker => (
-              <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                  <img 
-                    src={broker.data.logo.src} 
-                    alt={`Logo de ${broker.data.name}`}
-                    class="w-12 h-12 object-contain"
-                    loading="lazy"
-                  />
+              <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-corporate-secondary hover:shadow-lg transition-all duration-300 group">
+                <!-- Broker Header -->
+                <div class="flex items-center gap-4 mb-6">
+                  <div class="w-16 h-16 bg-white rounded-xl p-2 shadow-sm">
+                    <img 
+                      src={broker.data.logo.src} 
+                      alt={`Logo de ${broker.data.name}`}
+                      class="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
                   <div>
-                    <h3 class="font-bold text-gray-900">{broker.data.name}</h3>
-                    <p class="text-sm text-gray-500">{broker.data.countryOrigin}</p>
+                    <h3 class="font-bold text-corporate-primary text-lg">{broker.data.name}</h3>
+                    <p class="text-sm text-gray-600 font-medium">{broker.data.countryOrigin}</p>
                   </div>
                 </div>
                 
-                <div class="space-y-2 mb-4">
-                  <div class="flex justify-between">
-                    <span class="text-sm text-gray-600">Puntuación:</span>
-                    <div class="flex items-center gap-1">
-                      <span class="text-sm font-bold text-gray-900">{broker.data.rating}/5</span>
-                      <div class="flex">
-                        {Array.from({length: 5}, (_, i) => (
-                          <svg 
-                            class={`w-4 h-4 ${i < Math.floor(broker.data.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
-                            fill="currentColor" 
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                          </svg>
-                        ))}
-                      </div>
+                <!-- Rating -->
+                <div class="bg-white rounded-lg p-4 mb-6 shadow-sm">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm font-medium text-gray-700">Calificación General:</span>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xl font-bold text-corporate-primary">{broker.data.rating}</span>
+                      <span class="text-gray-500">/5</span>
                     </div>
                   </div>
-                  
-                  <div class="flex justify-between">
-                    <span class="text-sm text-gray-600">Depósito mín:</span>
-                    <span class="text-sm font-medium">${broker.data.minDeposit}</span>
+                  <div class="flex mb-3">
+                    {Array.from({length: 5}, (_, i) => (
+                      <svg 
+                        class={`w-5 h-5 ${i < Math.floor(broker.data.rating) ? 'text-accent-400' : 'text-gray-300'}`}
+                        fill="currentColor" 
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Key Info -->
+                <div class="space-y-4 mb-6">
+                  <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-700">💰 Depósito Mínimo:</span>
+                    <span class="text-sm font-bold text-corporate-primary">${broker.data.minDeposit}</span>
                   </div>
                   
-                  <div class="flex justify-between">
-                    <span class="text-sm text-gray-600">Regulado:</span>
-                    <span class={`text-sm font-medium ${broker.data.isRegulated ? 'text-green-600' : 'text-red-600'}`}>
-                      {broker.data.isRegulated ? 'Sí' : 'No'}
+                  <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-700">🛡️ Regulado:</span>
+                    <span class={`text-sm font-bold px-2 py-1 rounded-full ${broker.data.isRegulated ? 'bg-success-100 text-success-700' : 'bg-secondary-100 text-secondary-700'}`}>
+                      {broker.data.isRegulated ? '✓ Sí' : '✗ No'}
                     </span>
+                  </div>
+
+                  <div class="flex justify-between items-center py-2">
+                    <span class="text-sm font-medium text-gray-700">📊 Trust Score:</span>
+                    <span class="text-sm font-bold text-primary-600">{broker.data.trustScore}/100</span>
                   </div>
                 </div>
                 
+                <!-- CTA Button -->
                 <a 
                   href={`/brokers/${broker.slug}`}
-                  class="block w-full text-center bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  class="block w-full text-center bg-corporate-primary text-white py-3 rounded-lg font-bold hover:bg-corporate-secondary transition-all duration-300"
                 >
-                  Ver Análisis
+                  📋 Ver Análisis Completo
                 </a>
               </div>
             ))}
           </div>
           
-          <div class="text-center mt-8">
+          <div class="text-center mt-12">
             <a 
               href="/brokers" 
-              class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800"
+              class="inline-flex items-center bg-corporate-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-corporate-secondary transition-all duration-300"
             >
-              Ver todos los brokers 
-              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              Ver Todos los Brokers Analizados
+              <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
             </a>
           </div>
@@ -205,65 +285,77 @@ const topBrokers = allBrokers
 
     <!-- Recent Posts -->
     {recentPosts.length > 0 && (
-      <section class="py-16 bg-white">
+      <section class="py-20 bg-gray-50">
         <div class="container">
-          <div class="flex items-center justify-between mb-12">
+          <div class="flex items-center justify-between mb-16">
             <div>
-              <h2 class="text-3xl font-bold text-gray-900 mb-4">Últimas Noticias</h2>
-              <p class="text-gray-600">
-                Mantente informado con las últimas noticias del mercado financiero
+              <div class="inline-flex items-center bg-secondary-100 text-secondary-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+                </svg>
+                Últimas Actualizaciones
+              </div>
+              <h2 class="text-4xl font-bold text-corporate-primary mb-4">Noticias y Análisis Recientes</h2>
+              <p class="text-xl text-gray-700">
+                Mantente al día con las últimas noticias, análisis de mercado y alertas importantes
               </p>
             </div>
             <a 
               href="/blog" 
-              class="hidden md:inline-flex items-center text-blue-600 font-medium hover:text-blue-800"
+              class="hidden md:inline-flex items-center bg-primary-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-600 transition-colors"
             >
-              Ver todo el blog
+              Ver Todo el Blog
               <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
             </a>
           </div>
           
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {recentPosts.map(post => (
-              <article class="group">
-                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
+              <article class="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="aspect-video bg-gradient-to-br from-primary-100 to-primary-200 relative overflow-hidden">
                   <img 
                     src={post.data.image.src.src} 
                     alt={post.data.image.alt}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded font-medium">
-                    {post.data.category}
-                  </span>
-                  <span class="text-gray-500 text-sm">
-                    {post.data.publishDate.toLocaleDateString('es-ES')}
-                  </span>
+                
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide">
+                      {post.data.category}
+                    </span>
+                    <span class="text-gray-600 text-sm font-medium">
+                      📅 {post.data.publishDate.toLocaleDateString('es-ES')}
+                    </span>
+                  </div>
+                  
+                  <h3 class="text-xl font-bold text-corporate-primary mb-3 line-clamp-2 leading-tight">
+                    <a href={`/blog/${post.slug}`} class="hover:text-primary-600 transition-colors">
+                      {post.data.title}
+                    </a>
+                  </h3>
+                  
+                  <p class="text-gray-700 text-sm line-clamp-3 leading-relaxed">
+                    {post.data.description}
+                  </p>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
-                  <a href={`/blog/${post.slug}`} class="hover:text-blue-600 transition-colors">
-                    {post.data.title}
-                  </a>
-                </h3>
-                <p class="text-gray-600 text-sm line-clamp-3">
-                  {post.data.description}
-                </p>
               </article>
             ))}
           </div>
           
-          <div class="text-center mt-8 md:hidden">
+          <div class="text-center mt-12 md:hidden">
             <a 
               href="/blog" 
-              class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800"
+              class="inline-flex items-center bg-primary-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-600 transition-colors"
             >
-              Ver todo el blog
-              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              Ver Todo el Blog
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
             </a>
           </div>
@@ -272,32 +364,85 @@ const topBrokers = allBrokers
     )}
 
     <!-- Newsletter CTA -->
-    <section class="py-16 bg-blue-600">
+    <section class="py-20 bg-corporate-primary">
       <div class="container">
-        <div class="max-w-2xl mx-auto text-center text-white">
-          <h2 class="text-3xl font-bold mb-4">
-            Mantente informado
+        <div class="max-w-4xl mx-auto text-center text-white">
+          <div class="inline-flex items-center bg-white bg-opacity-20 text-white px-6 py-3 rounded-lg text-sm font-medium mb-8">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+            </svg>
+            Newsletter Exclusivo
+          </div>
+          
+          <h2 class="text-4xl md:text-5xl font-bold mb-8">
+            Mantente Siempre Informado
           </h2>
-          <p class="text-blue-100 mb-8">
-            Recibe nuestro análisis semanal de brokers y las noticias más importantes del mercado
+          
+          <p class="text-xl text-white text-opacity-90 mb-12 leading-relaxed max-w-3xl mx-auto">
+            Recibe análisis exclusivos de brokers, alertas de seguridad prioritarias y las noticias más importantes del mercado financiero directamente en tu email.
           </p>
-          <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+
+          <!-- Benefits -->
+          <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">📊</span>
+              </div>
+              <h3 class="font-bold text-lg mb-2 text-white">Análisis Semanales</h3>
+              <p class="text-white text-opacity-80 text-sm">Reviews exclusivos de brokers y mercados</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🚨</span>
+              </div>
+              <h3 class="font-bold text-lg mb-2 text-white">Alertas Prioritarias</h3>
+              <p class="text-white text-opacity-80 text-sm">Avisos inmediatos sobre riesgos y estafas</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🎓</span>
+              </div>
+              <h3 class="font-bold text-lg mb-2 text-white">Educación Continua</h3>
+              <p class="text-white text-opacity-80 text-sm">Tips y estrategias para mejorar tu trading</p>
+            </div>
+          </div>
+          
+          <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-8">
             <input 
               type="email" 
-              placeholder="Tu email"
-              class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500"
+              placeholder="Tu email profesional"
+              class="flex-1 px-6 py-4 rounded-lg text-gray-900 placeholder-gray-500 font-medium border-2 border-white focus:border-accent-400 transition-colors bg-white"
               required
             />
             <button 
               type="submit"
-              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              class="bg-accent-400 text-corporate-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-accent-300 transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              Suscribirme
+              📧 Suscribirme Gratis
             </button>
           </form>
-          <p class="text-xs text-blue-100 mt-4">
-            Sin spam. Solo contenido de valor. Cancela cuando quieras.
-          </p>
+          
+          <div class="flex items-center justify-center space-x-6 text-sm text-white text-opacity-80">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              100% Gratuito
+            </div>
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              Sin Spam
+            </div>
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              Cancela Cuando Quieras
+            </div>
+          </div>
         </div>
       </div>
     </section>

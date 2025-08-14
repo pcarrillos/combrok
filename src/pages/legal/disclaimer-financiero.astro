@@ -1,0 +1,326 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Disclaimer Financiero | Comunidad Broker',
+  description: 'Disclaimer financiero de Comunidad Broker. Advertencias sobre riesgos de inversión y limitaciones de responsabilidad en trading y mercados financieros.',
+  canonical: '/legal/disclaimer-financiero'
+};
+---
+
+<BaseLayout seo={seo}>
+  <div class="container mx-auto px-4 py-12 max-w-4xl">
+    <div class="prose prose-lg mx-auto">
+      <h1>Disclaimer Financiero</h1>
+      
+      <p class="lead text-gray-600">
+        Última actualización: {new Date().toLocaleDateString('es-ES')}
+      </p>
+
+      <div class="bg-red-50 border-2 border-red-200 p-6 my-8">
+        <h2 class="text-red-800 mt-0 text-2xl font-bold">⚠️ ADVERTENCIA DE RIESGO IMPORTANTE</h2>
+        <p class="text-red-700 text-lg font-semibold mb-0">
+          EL TRADING CON CFDs, FOREX Y OTROS INSTRUMENTOS FINANCIEROS CONLLEVA UN ALTO NIVEL DE RIESGO Y PUEDE NO SER ADECUADO PARA TODOS LOS INVERSORES. ES POSIBLE PERDER EL 100% DE SU CAPITAL INVERTIDO.
+        </p>
+      </div>
+
+      <h2>1. Naturaleza de la Información</h2>
+
+      <h3>1.1 Propósito Educativo e Informativo</h3>
+      <p>
+        Toda la información proporcionada en Comunidad Broker tiene únicamente propósitos:
+      </p>
+      <ul>
+        <li><strong>Educativos:</strong> Para mejorar el conocimiento sobre mercados financieros</li>
+        <li><strong>Informativos:</strong> Para proporcionar datos actualizados del sector</li>
+        <li><strong>Analíticos:</strong> Para ofrecer perspectivas y análisis independientes</li>
+      </ul>
+
+      <h3>1.2 NO Constituye Asesoramiento Financiero</h3>
+      <p>
+        El contenido de este sitio web <strong>NO constituye</strong>:
+      </p>
+      <ul>
+        <li>Asesoramiento financiero personalizado</li>
+        <li>Recomendaciones de inversión específicas</li>
+        <li>Solicitud para comprar o vender instrumentos financieros</li>
+        <li>Consejos fiscales o legales</li>
+        <li>Garantías de rendimientos futuros</li>
+      </ul>
+
+      <h2>2. Riesgos Específicos por Instrumento</h2>
+
+      <h3>2.1 Contratos por Diferencia (CFDs)</h3>
+      <div class="bg-orange-50 border-l-4 border-orange-500 p-4 my-4">
+        <p class="text-orange-700">
+          <strong>Riesgo Extremo:</strong> Los CFDs son instrumentos complejos con alto riesgo de perder dinero rápidamente debido al apalancamiento. Entre el 74-89% de las cuentas de inversores minoristas pierden dinero al operar CFDs.
+        </p>
+      </div>
+      
+      <p>Riesgos específicos de los CFDs:</p>
+      <ul>
+        <li><strong>Apalancamiento:</strong> Amplifica tanto las ganancias como las pérdidas</li>
+        <li><strong>Llamadas de margen:</strong> Puede requerir depósitos adicionales</li>
+        <li><strong>Volatilidad:</strong> Los precios pueden cambiar rápidamente</li>
+        <li><strong>Costes overnight:</strong> Posiciones mantenidas tienen costes adicionales</li>
+        <li><strong>Gaps de mercado:</strong> Pueden generar pérdidas superiores al depósito</li>
+      </ul>
+
+      <h3>2.2 Forex (Divisas)</h3>
+      <p>Riesgos del mercado de divisas:</p>
+      <ul>
+        <li><strong>Volatilidad extrema:</strong> Cambios bruscos por eventos económicos</li>
+        <li><strong>Apalancamiento alto:</strong> Comúnmente de 1:30 a 1:500</li>
+        <li><strong>Liquidez variable:</strong> Especialmente fuera del horario de mercado</li>
+        <li><strong>Riesgo de contrapartida:</strong> Dependencia del broker</li>
+        <li><strong>Factores macroeconómicos:</strong> Políticas gubernamentales y bancarias</li>
+      </ul>
+
+      <h3>2.3 Criptomonedas</h3>
+      <div class="bg-red-50 border-l-4 border-red-500 p-4 my-4">
+        <p class="text-red-700">
+          <strong>Volatilidad Extrema:</strong> Las criptomonedas pueden experimentar fluctuaciones de precio del 50% o más en períodos muy cortos.
+        </p>
+      </div>
+      
+      <p>Riesgos específicos de criptomonedas:</p>
+      <ul>
+        <li><strong>Volatilidad extrema:</strong> Cambios de precio del 20-50% diarios</li>
+        <li><strong>Regulación incierta:</strong> Posibles prohibiciones gubernamentales</li>
+        <li><strong>Riesgo tecnológico:</strong> Hackeos, errores de software</li>
+        <li><strong>Falta de protección:</strong> Sin seguros de depósitos</li>
+        <li><strong>Manipulación de mercado:</strong> Mercados menos regulados</li>
+      </ul>
+
+      <h3>2.4 Acciones y ETFs</h3>
+      <p>Riesgos de inversión en acciones:</p>
+      <ul>
+        <li><strong>Riesgo de mercado:</strong> Caídas generales del mercado</li>
+        <li><strong>Riesgo específico:</strong> Problemas de la empresa individual</li>
+        <li><strong>Riesgo de liquidez:</strong> Dificultad para vender en ciertos momentos</li>
+        <li><strong>Riesgo de divisa:</strong> Para acciones extranjeras</li>
+        <li><strong>Riesgo de concentración:</strong> Falta de diversificación</li>
+      </ul>
+
+      <h2>3. Factores de Riesgo Generales</h2>
+
+      <h3>3.1 Riesgos Psicológicos</h3>
+      <ul>
+        <li><strong>Overtrading:</strong> Operar en exceso por emociones</li>
+        <li><strong>FOMO (Fear of Missing Out):</strong> Miedo a perderse oportunidades</li>
+        <li><strong>Revenge Trading:</strong> Intentar recuperar pérdidas rápidamente</li>
+        <li><strong>Sesgo de confirmación:</strong> Buscar solo información que confirme creencias</li>
+        <li><strong>Efecto manada:</strong> Seguir decisiones de la multitud sin análisis</li>
+      </ul>
+
+      <h3>3.2 Riesgos Técnicos</h3>
+      <ul>
+        <li><strong>Fallos de plataforma:</strong> Problemas técnicos del broker</li>
+        <li><strong>Conectividad:</strong> Problemas de internet</li>
+        <li><strong>Slippage:</strong> Diferencia entre precio esperado y ejecutado</li>
+        <li><strong>Requotes:</strong> Cambios de precio durante la ejecución</li>
+        <li><strong>Latencia:</strong> Retrasos en la ejecución de órdenes</li>
+      </ul>
+
+      <h3>3.3 Riesgos del Broker</h3>
+      <ul>
+        <li><strong>Solvencia:</strong> Riesgo de quiebra del broker</li>
+        <li><strong>Regulación:</strong> Cambios en licencias y supervisión</li>
+        <li><strong>Segregación de fondos:</strong> Protección de depósitos de clientes</li>
+        <li><strong>Conflictos de interés:</strong> Broker como contrapartida</li>
+        <li><strong>Política de ejecución:</strong> Calidad de ejecución de órdenes</li>
+      </ul>
+
+      <h2>4. Responsabilidad del Inversor</h2>
+
+      <h3>4.1 Debida Diligencia</h3>
+      <p>
+        Antes de realizar cualquier inversión, es su responsabilidad:
+      </p>
+      <ul>
+        <li>Consultar con un asesor financiero cualificado</li>
+        <li>Evaluar su situación financiera personal</li>
+        <li>Determinar su tolerancia al riesgo</li>
+        <li>Comprender completamente el instrumento financiero</li>
+        <li>Leer toda la documentación legal del broker</li>
+        <li>Verificar la regulación y licencias del broker</li>
+      </ul>
+
+      <h3>4.2 Gestión de Riesgo</h3>
+      <p>
+        Prácticas recomendadas para gestión de riesgo:
+      </p>
+      <ul>
+        <li><strong>Capital de riesgo:</strong> Solo invierta dinero que pueda permitirse perder</li>
+        <li><strong>Diversificación:</strong> No concentre todo su capital en una inversión</li>
+        <li><strong>Stop Loss:</strong> Utilice órdenes de cierre automático</li>
+        <li><strong>Posición sizing:</strong> Limite el tamaño de cada operación</li>
+        <li><strong>Educación continua:</strong> Manténgase actualizado sobre los mercados</li>
+      </ul>
+
+      <h2>5. Limitación de Responsabilidad</h2>
+
+      <h3>5.1 Exclusión de Responsabilidad</h3>
+      <p>
+        Comunidad Broker no se hace responsable de:
+      </p>
+      <ul>
+        <li>Pérdidas financieras resultantes del uso de nuestra información</li>
+        <li>Decisiones de inversión tomadas por los usuarios</li>
+        <li>Acciones u omisiones de brokers mencionados en el sitio</li>
+        <li>Cambios en las condiciones de mercado</li>
+        <li>Interrupciones en el acceso a mercados financieros</li>
+        <li>Errores en la información proporcionada por terceros</li>
+      </ul>
+
+      <h3>5.2 Sin Garantías</h3>
+      <p>
+        No proporcionamos garantías sobre:
+      </p>
+      <ul>
+        <li>La exactitud de la información en tiempo real</li>
+        <li>La continuidad de las condiciones de los brokers</li>
+        <li>Los resultados de estrategias de trading</li>
+        <li>La solvencia de las entidades mencionadas</li>
+        <li>La estabilidad de los mercados financieros</li>
+      </ul>
+
+      <h2>6. Advertencias Regulatorias</h2>
+
+      <h3>6.1 Reguladores Relevantes</h3>
+      <p>
+        Antes de elegir un broker, verifique su regulación con las autoridades competentes:
+      </p>
+      <ul>
+        <li><strong>España:</strong> CNMV (Comisión Nacional del Mercado de Valores)</li>
+        <li><strong>Reino Unido:</strong> FCA (Financial Conduct Authority)</li>
+        <li><strong>Chipre:</strong> CySEC (Cyprus Securities and Exchange Commission)</li>
+        <li><strong>Australia:</strong> ASIC (Australian Securities and Investments Commission)</li>
+        <li><strong>Estados Unidos:</strong> SEC, CFTC, NFA</li>
+      </ul>
+
+      <h3>6.2 Protección de Inversores</h3>
+      <p>
+        Verifique las protecciones disponibles:
+      </p>
+      <ul>
+        <li><strong>Seguros de depósitos:</strong> FSCS (Reino Unido), ICF (Chipre)</li>
+        <li><strong>Segregación de fondos:</strong> Separación de fondos de clientes</li>
+        <li><strong>Compensación:</strong> Esquemas de compensación de inversores</li>
+        <li><strong>Resolución de disputas:</strong> Servicios de ombudsman financiero</li>
+      </ul>
+
+      <h2>7. Información Sobre Afiliaciones</h2>
+
+      <h3>7.1 Transparencia en Compensaciones</h3>
+      <p>
+        Comunidad Broker puede recibir compensación de algunos brokers cuando los usuarios:
+      </p>
+      <ul>
+        <li>Se registran a través de nuestros enlaces</li>
+        <li>Realizan depósitos iniciales</li>
+        <li>Completan cierto volumen de trading</li>
+      </ul>
+
+      <h3>7.2 Independencia Editorial</h3>
+      <p>
+        Las compensaciones por afiliación <strong>NO influyen</strong> en:
+      </p>
+      <ul>
+        <li>Nuestros análisis y reviews</li>
+        <li>Las calificaciones asignadas a brokers</li>
+        <li>Las advertencias sobre riesgos</li>
+        <li>La inclusión o exclusión de brokers en comparativas</li>
+      </ul>
+
+      <h2>8. Actualización de Información</h2>
+
+      <h3>8.1 Frecuencia de Actualizaciones</h3>
+      <p>
+        Nos esforzamos por mantener la información actualizada, pero:
+      </p>
+      <ul>
+        <li>Las condiciones de los brokers pueden cambiar sin previo aviso</li>
+        <li>Los precios de mercado fluctúan constantemente</li>
+        <li>Las regulaciones pueden modificarse</li>
+        <li>La información puede contener errores u omisiones</li>
+      </ul>
+
+      <h3>8.2 Verificación Recomendada</h3>
+      <p>
+        Siempre verifique la información actual directamente con:
+      </p>
+      <ul>
+        <li>El sitio web oficial del broker</li>
+        <li>Los documentos legales del broker</li>
+        <li>Las autoridades regulatorias</li>
+        <li>Su asesor financiero</li>
+      </ul>
+
+      <h2>9. Casos Especiales</h2>
+
+      <h3>9.1 Inversores Profesionales vs. Minoristas</h3>
+      <p>
+        Los inversores profesionales pueden tener:
+      </p>
+      <ul>
+        <li>Mayor apalancamiento disponible</li>
+        <li>Diferentes protecciones regulatorias</li>
+        <li>Acceso a instrumentos adicionales</li>
+        <li>Condiciones comerciales específicas</li>
+      </ul>
+
+      <h3>9.2 Jurisdicciones Restringidas</h3>
+      <p>
+        Algunos brokers pueden no estar disponibles para residentes de ciertas jurisdicciones debido a regulaciones locales.
+      </p>
+
+      <h2>10. Recursos Adicionales</h2>
+
+      <h3>10.1 Educación Financiera</h3>
+      <p>
+        Recomendamos consultar recursos educativos adicionales:
+      </p>
+      <ul>
+        <li>Cursos de educación financiera oficiales</li>
+        <li>Publicaciones de reguladores financieros</li>
+        <li>Libros especializados en mercados financieros</li>
+        <li>Simuladores de trading para práctica</li>
+      </ul>
+
+      <h3>10.2 Organismos de Protección</h3>
+      <p>
+        En caso de disputas con brokers, puede contactar:
+      </p>
+      <ul>
+        <li>Servicio de Reclamaciones de CNMV (España)</li>
+        <li>Financial Ombudsman Service (Reino Unido)</li>
+        <li>Organismos equivalentes en otras jurisdicciones</li>
+      </ul>
+
+      <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-8">
+        <h3 class="text-yellow-800 text-xl font-bold mb-3">💡 Recordatorio Final</h3>
+        <div class="text-yellow-700 space-y-2">
+          <p class="font-semibold">
+            El trading e inversión en mercados financieros requiere conocimiento, experiencia y gestión prudente del riesgo.
+          </p>
+          <p>
+            <strong>Nunca invierta más de lo que pueda permitirse perder.</strong> Los mercados financieros son impredecibles y las pérdidas pueden exceder los depósitos iniciales.
+          </p>
+          <p>
+            Busque siempre asesoramiento profesional independiente antes de tomar decisiones de inversión importantes.
+          </p>
+        </div>
+      </div>
+
+      <h2>11. Contacto</h2>
+      <p>
+        Para consultas relacionadas con este disclaimer financiero:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:legal@comunidadbroker.com">legal@comunidadbroker.com</a></li>
+        <li>Formulario de contacto: <a href="/contacto">/contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,356 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Política de Cookies | Comunidad Broker',
+  description: 'Política de cookies de Comunidad Broker. Información sobre el uso de cookies, tipos de cookies y cómo gestionarlas.',
+  canonical: '/legal/politica-de-cookies'
+};
+---
+
+<BaseLayout seo={seo}>
+  <div class="container mx-auto px-4 py-12 max-w-4xl">
+    <div class="prose prose-lg mx-auto">
+      <h1>Política de Cookies</h1>
+      
+      <p class="lead text-gray-600">
+        Última actualización: {new Date().toLocaleDateString('es-ES')}
+      </p>
+
+      <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6">
+        <p class="text-green-700">
+          <strong>Enfoque Privacy-First:</strong> Comunidad Broker utiliza un número mínimo de cookies y prioriza su privacidad. Utilizamos analytics sin cookies (Plausible) para respetar al máximo su privacidad.
+        </p>
+      </div>
+
+      <h2>1. ¿Qué son las Cookies?</h2>
+      <p>
+        Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Permiten que el sitio web recuerde sus acciones y preferencias durante un período de tiempo, mejorando su experiencia de navegación.
+      </p>
+
+      <h3>1.1 Tipos de Cookies por Duración</h3>
+      <ul>
+        <li><strong>Cookies de sesión:</strong> Se eliminan al cerrar el navegador</li>
+        <li><strong>Cookies persistentes:</strong> Permanecen hasta su fecha de caducidad o eliminación manual</li>
+      </ul>
+
+      <h3>1.2 Tipos de Cookies por Origen</h3>
+      <ul>
+        <li><strong>Cookies propias:</strong> Establecidas por nuestro sitio web</li>
+        <li><strong>Cookies de terceros:</strong> Establecidas por servicios externos</li>
+      </ul>
+
+      <h2>2. Cookies que Utilizamos</h2>
+
+      <h3>2.1 Cookies Estrictamente Necesarias</h3>
+      <p>
+        Estas cookies son esenciales para el funcionamiento del sitio web y no requieren consentimiento.
+      </p>
+      
+      <table class="min-w-full mt-4">
+        <thead>
+          <tr>
+            <th class="border-b text-left p-2">Cookie</th>
+            <th class="border-b text-left p-2">Propósito</th>
+            <th class="border-b text-left p-2">Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border-b p-2"><code>session_id</code></td>
+            <td class="border-b p-2">Mantener sesión del usuario en el panel admin</td>
+            <td class="border-b p-2">Sesión</td>
+          </tr>
+          <tr>
+            <td class="border-b p-2"><code>csrf_token</code></td>
+            <td class="border-b p-2">Protección contra ataques CSRF</td>
+            <td class="border-b p-2">Sesión</td>
+          </tr>
+          <tr>
+            <td class="border-b p-2"><code>cookie_consent</code></td>
+            <td class="border-b p-2">Recordar preferencias de cookies</td>
+            <td class="border-b p-2">1 año</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 Cookies de Preferencias</h3>
+      <p>
+        Estas cookies permiten recordar sus preferencias para mejorar su experiencia.
+      </p>
+      
+      <table class="min-w-full mt-4">
+        <thead>
+          <tr>
+            <th class="border-b text-left p-2">Cookie</th>
+            <th class="border-b text-left p-2">Propósito</th>
+            <th class="border-b text-left p-2">Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border-b p-2"><code>theme_preference</code></td>
+            <td class="border-b p-2">Recordar tema claro/oscuro (si está habilitado)</td>
+            <td class="border-b p-2">1 año</td>
+          </tr>
+          <tr>
+            <td class="border-b p-2"><code>language_preference</code></td>
+            <td class="border-b p-2">Recordar idioma seleccionado</td>
+            <td class="border-b p-2">1 año</td>
+          </tr>
+          <tr>
+            <td class="border-b p-2"><code>notification_settings</code></td>
+            <td class="border-b p-2">Configuración de notificaciones</td>
+            <td class="border-b p-2">6 meses</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3. Analytics Sin Cookies</h2>
+
+      <h3>3.1 Plausible Analytics</h3>
+      <p>
+        Utilizamos <strong>Plausible Analytics</strong>, una solución de analytics que:
+      </p>
+      <ul>
+        <li>✅ <strong>No utiliza cookies</strong></li>
+        <li>✅ <strong>No rastrea usuarios individualmente</strong></li>
+        <li>✅ <strong>Cumple 100% con RGPD</strong></li>
+        <li>✅ <strong>No requiere banner de cookies</strong></li>
+        <li>✅ <strong>Datos agregados y anónimos</strong></li>
+      </ul>
+
+      <h3>3.2 Datos Recopilados por Plausible</h3>
+      <p>
+        Los únicos datos recopilados son:
+      </p>
+      <ul>
+        <li>Páginas visitadas (sin identificadores personales)</li>
+        <li>Fuente de tráfico (directo, buscadores, redes sociales)</li>
+        <li>País aproximado (basado en IP, inmediatamente anonimizada)</li>
+        <li>Dispositivo y navegador (información técnica básica)</li>
+      </ul>
+
+      <h2>4. Cookies de Terceros</h2>
+
+      <h3>4.1 Situaciones Específicas</h3>
+      <p>
+        Ocasionalmente, pueden establecerse cookies de terceros en estas situaciones:
+      </p>
+
+      <h4>YouTube (Contenido Embebido)</h4>
+      <p>
+        Si embebemos videos de YouTube, pueden establecer cookies para:
+      </p>
+      <ul>
+        <li>Recordar preferencias de reproducción</li>
+        <li>Recopilar estadísticas de visualización</li>
+        <li>Personalizar anuncios (si están habilitados)</li>
+      </ul>
+      <p>
+        <strong>Control:</strong> Utilizamos modo "youtube-nocookie.com" cuando está disponible para minimizar el tracking.
+      </p>
+
+      <h4>Enlaces de Afiliación</h4>
+      <p>
+        Los enlaces a brokers pueden establecer cookies para:
+      </p>
+      <ul>
+        <li>Rastrear referencias y conversiones</li>
+        <li>Atribuir comisiones de afiliación</li>
+        <li>Personalizar ofertas para usuarios</li>
+      </ul>
+      <p>
+        <strong>Nota:</strong> Estas cookies se establecen únicamente cuando hace clic en enlaces externos.
+      </p>
+
+      <h2>5. Gestión de Cookies</h2>
+
+      <h3>5.1 Configuración del Navegador</h3>
+      <p>
+        Puede gestionar las cookies a través de la configuración de su navegador:
+      </p>
+
+      <h4>Google Chrome</h4>
+      <ol>
+        <li>Menú → Configuración → Privacidad y seguridad → Cookies y otros datos de sitios</li>
+        <li>Configurar según sus preferencias</li>
+      </ol>
+
+      <h4>Mozilla Firefox</h4>
+      <ol>
+        <li>Menú → Configuración → Privacidad y seguridad</li>
+        <li>Configurar "Protección antirrastreo mejorada"</li>
+      </ol>
+
+      <h4>Safari</h4>
+      <ol>
+        <li>Configuración → Safari → Privacidad</li>
+        <li>Configurar "Bloquear todas las cookies" según preferencias</li>
+      </ol>
+
+      <h4>Microsoft Edge</h4>
+      <ol>
+        <li>Menú → Configuración → Cookies y permisos de sitio</li>
+        <li>Administrar cookies y datos de sitios</li>
+      </ol>
+
+      <h3>5.2 Modo Incógnito/Privado</h3>
+      <p>
+        Navegar en modo incógnito/privado limita el almacenamiento de cookies, aunque las cookies de sesión seguirán funcionando durante esa sesión.
+      </p>
+
+      <h3>5.3 Extensiones del Navegador</h3>
+      <p>
+        Extensiones útiles para gestión de privacidad:
+      </p>
+      <ul>
+        <li><strong>uBlock Origin:</strong> Bloqueo de anuncios y rastreadores</li>
+        <li><strong>Privacy Badger:</strong> Bloqueo inteligente de rastreadores</li>
+        <li><strong>Ghostery:</strong> Control detallado de scripts de terceros</li>
+      </ul>
+
+      <h2>6. Impacto de Deshabilitar Cookies</h2>
+
+      <h3>6.1 Funcionalidades Afectadas</h3>
+      <p>
+        Si deshabilita las cookies, puede experimentar:
+      </p>
+      <ul>
+        <li>Necesidad de iniciar sesión repetidamente en el panel admin</li>
+        <li>Pérdida de preferencias de usuario</li>
+        <li>Funcionamiento incorrecto de formularios</li>
+        <li>Imposibilidad de mantener artículos en "favoritos"</li>
+      </ul>
+
+      <h3>6.2 Funcionalidades NO Afectadas</h3>
+      <p>
+        Estas funciones seguirán funcionando normalmente:
+      </p>
+      <ul>
+        <li>Lectura de contenido público</li>
+        <li>Navegación por el sitio web</li>
+        <li>Búsqueda de contenido</li>
+        <li>Acceso a análisis de brokers</li>
+        <li>Analytics del sitio (Plausible no usa cookies)</li>
+      </ul>
+
+      <h2>7. Cookies y Normativas Legales</h2>
+
+      <h3>7.1 Cumplimiento RGPD</h3>
+      <p>
+        Nuestro uso de cookies cumple con el RGPD porque:
+      </p>
+      <ul>
+        <li>Minimizamos el uso de cookies no esenciales</li>
+        <li>Proporcionamos información clara sobre su uso</li>
+        <li>Respetamos sus preferencias de privacidad</li>
+        <li>Utilizamos analytics sin cookies cuando es posible</li>
+      </ul>
+
+      <h3>7.2 Directiva ePrivacy</h3>
+      <p>
+        Cumplimos con la Directiva ePrivacy de la UE:
+      </p>
+      <ul>
+        <li>Obtenemos consentimiento para cookies no esenciales</li>
+        <li>Proporcionamos mecanismos para rechazar cookies</li>
+        <li>Informamos claramente sobre el propósito de cada cookie</li>
+      </ul>
+
+      <h2>8. Tecnologías Alternativas</h2>
+
+      <h3>8.1 Local Storage y Session Storage</h3>
+      <p>
+        Ocasionalmente utilizamos estas tecnologías del navegador para:
+      </p>
+      <ul>
+        <li>Almacenar preferencias temporales</li>
+        <li>Mejorar el rendimiento del sitio</li>
+        <li>Guardar el estado de formularios</li>
+      </ul>
+
+      <h3>8.2 Fingerprinting</h3>
+      <p>
+        <strong>NO utilizamos</strong> técnicas de fingerprinting del navegador para rastrear usuarios. Respetamos completamente su privacidad.
+      </p>
+
+      <h2>9. Cookies de Redes Sociales</h2>
+
+      <h3>9.1 Botones de Compartir</h3>
+      <p>
+        Si incluimos botones de compartir en redes sociales, pueden establecer cookies para:
+      </p>
+      <ul>
+        <li>Facilitar el proceso de compartir</li>
+        <li>Mostrar contadores de compartidos</li>
+        <li>Personalizar el contenido social</li>
+      </ul>
+
+      <h3>9.2 Contenido Embebido</h3>
+      <p>
+        El contenido embebido de redes sociales (tweets, posts de LinkedIn) puede establecer sus propias cookies según las políticas de cada plataforma.
+      </p>
+
+      <h2>10. Actualizaciones de esta Política</h2>
+
+      <h3>10.1 Notificación de Cambios</h3>
+      <p>
+        Le notificaremos sobre cambios significativos en esta política a través de:
+      </p>
+      <ul>
+        <li>Aviso prominente en el sitio web</li>
+        <li>Actualización de la fecha en esta página</li>
+        <li>Email a suscriptores (para cambios importantes)</li>
+      </ul>
+
+      <h3>10.2 Revisión Regular</h3>
+      <p>
+        Revisamos esta política regularmente para asegurar que:
+      </p>
+      <ul>
+        <li>Refleje fielmente nuestras prácticas actuales</li>
+        <li>Cumpla con las regulaciones vigentes</li>
+        <li>Se mantenga clara y comprensible</li>
+      </ul>
+
+      <h2>11. Preguntas Frecuentes</h2>
+
+      <h3>¿Puedo usar el sitio sin aceptar cookies?</h3>
+      <p>
+        Sí, puede navegar y acceder a la mayoría del contenido sin aceptar cookies opcionales. Solo las cookies estrictamente necesarias son requeridas para funciones básicas.
+      </p>
+
+      <h3>¿Venden mis datos a terceros?</h3>
+      <p>
+        No, nunca vendemos datos personales. Los únicos datos compartidos son estadísticas agregadas y anónimas para mejorar nuestro servicio.
+      </p>
+
+      <h3>¿Cómo puedo eliminar las cookies ya almacenadas?</h3>
+      <p>
+        Puede eliminar cookies a través de la configuración de su navegador o utilizar herramientas como "Borrar datos de navegación" en la mayoría de navegadores.
+      </p>
+
+      <h3>¿Por qué no usan Google Analytics?</h3>
+      <p>
+        Elegimos Plausible Analytics porque respeta mejor la privacidad de nuestros usuarios al no utilizar cookies ni rastrear usuarios individuales.
+      </p>
+
+      <h2>12. Contacto</h2>
+      <p>
+        Para consultas sobre cookies y privacidad:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:privacy@comunidadbroker.com">privacy@comunidadbroker.com</a></li>
+        <li>Formulario de contacto: <a href="/contacto">/contacto</a> (marcar "Consulta sobre Privacidad")</li>
+      </ul>
+
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">
+        <h3 class="text-blue-800 text-lg font-semibold mb-2">🍪 Nuestro Compromiso</h3>
+        <p class="text-blue-700 mb-0">
+          En Comunidad Broker creemos que la privacidad es un derecho fundamental. Por eso utilizamos la menor cantidad de cookies posible y siempre priorizamos soluciones que respeten su privacidad. Su confianza es nuestro bien más valioso.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

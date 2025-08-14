@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Contacto | Comunidad Broker',
+  description: 'Contáctanos para consultas, sugerencias o reportar problemas. Estamos aquí para ayudarte con tus dudas sobre trading y brokers.',
+  canonical: '/contacto'
+};
+---
+
+<BaseLayout seo={seo}>
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-corporate-primary mb-4">Contacto</h1>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+          ¿Tienes alguna pregunta, sugerencia o quieres reportar un problema? Estamos aquí para ayudarte.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <div class="bg-white border border-gray-200 rounded-lg p-8">
+            <h2 class="text-2xl font-bold text-corporate-primary mb-6">Envíanos un Mensaje</h2>
+            
+            <form id="contact-form" class="space-y-6">
+              <!-- Name and Email -->
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                    Nombre completo *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-corporate-primary focus:border-corporate-primary transition-colors"
+                    placeholder="Tu nombre"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-corporate-primary focus:border-corporate-primary transition-colors"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">
+                  Asunto *
+                </label>
+                <select
+                  id="subject"
+                  name="subject"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                >
+                  <option value="">Selecciona un tema</option>
+                  <option value="consulta-general">Consulta General</option>
+                  <option value="reportar-broker">Reportar Problema con Broker</option>
+                  <option value="sugerencia-contenido">Sugerencia de Contenido</option>
+                  <option value="error-sitio">Error en el Sitio Web</option>
+                  <option value="solicitud-review">Solicitar Review de Broker</option>
+                  <option value="consulta-privacidad">Consulta sobre Privacidad</option>
+                  <option value="solicitud-legal">Solicitud Legal</option>
+                  <option value="colaboracion">Propuesta de Colaboración</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+                  Mensaje *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical"
+                  placeholder="Describe tu consulta o problema en detalle..."
+                ></textarea>
+                <p class="text-sm text-gray-500 mt-2">
+                  Para reportes de brokers problemáticos, incluye toda la información posible: nombre del broker, URL, tipo de problema, evidencias, etc.
+                </p>
+              </div>
+
+              <!-- Privacy Notice -->
+              <div class="bg-gray-50 border border-corporate-primary rounded-lg p-4">
+                <div class="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="privacy"
+                    name="privacy"
+                    required
+                    class="mt-1 mr-3 h-4 w-4 text-corporate-primary focus:ring-corporate-primary border-gray-300 rounded"
+                  />
+                  <label for="privacy" class="text-sm text-corporate-primary">
+                    He leído y acepto la <a href="/legal/politica-de-privacidad" class="underline hover:text-corporate-secondary">Política de Privacidad</a>. 
+                    Entiendo que mis datos serán tratados únicamente para responder a esta consulta. *
+                  </label>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div>
+                <button
+                  type="submit"
+                  class="w-full bg-corporate-primary text-white py-3 px-6 rounded-lg font-medium hover:bg-corporate-secondary focus:outline-none focus:ring-2 focus:ring-corporate-primary focus:ring-offset-2 transition-colors"
+                >
+                  Enviar Mensaje
+                </button>
+              </div>
+            </form>
+
+            <!-- Success/Error Messages -->
+            <div id="form-messages" class="mt-4 hidden">
+              <div id="success-message" class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg hidden">
+                <strong>¡Mensaje enviado correctamente!</strong> Te responderemos lo antes posible.
+              </div>
+              <div id="error-message" class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg hidden">
+                <strong>Error al enviar el mensaje.</strong> Por favor, inténtalo de nuevo o contáctanos directamente por email.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <!-- Direct Contact -->
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+            <h3 class="font-semibold text-gray-900 mb-4">Contacto Directo</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-10 h-10 bg-corporate-secondary bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                  <svg class="w-5 h-5 text-corporate-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">Email General</h4>
+                  <a href="mailto:contacto@comunidadbroker.com" class="text-corporate-primary hover:text-corporate-secondary">
+                    contacto@comunidadbroker.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-10 h-10 bg-secondary-100 rounded-full flex items-center justify-center mr-3">
+                  <svg class="w-5 h-5 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">Alertas de Seguridad</h4>
+                  <a href="mailto:alertas@comunidadbroker.com" class="text-red-600 hover:text-red-800">
+                    alertas@comunidadbroker.com
+                  </a>
+                  <p class="text-sm text-gray-600 mt-1">Para reportar brokers fraudulentos o estafas</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-10 h-10 bg-success-100 rounded-full flex items-center justify-center mr-3">
+                  <svg class="w-5 h-5 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">Privacidad</h4>
+                  <a href="mailto:privacy@comunidadbroker.com" class="text-success-600 hover:text-success-700">
+                    privacy@comunidadbroker.com
+                  </a>
+                  <p class="text-sm text-gray-600 mt-1">Para consultas sobre privacidad y datos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Response Times -->
+          <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+            <h3 class="font-semibold text-yellow-900 mb-4">⏰ Tiempos de Respuesta</h3>
+            <ul class="space-y-2 text-yellow-800 text-sm">
+              <li>• <strong>Consultas generales:</strong> 24-48 horas</li>
+              <li>• <strong>Alertas de seguridad:</strong> 2-8 horas</li>
+              <li>• <strong>Errores del sitio:</strong> 4-12 horas</li>
+              <li>• <strong>Consultas legales:</strong> 48-72 horas</li>
+            </ul>
+          </div>
+
+          <!-- FAQ Link -->
+          <div class="bg-gray-50 border border-corporate-primary rounded-lg p-6">
+            <h3 class="font-semibold text-corporate-primary mb-3">💡 Antes de Contactarnos</h3>
+            <p class="text-gray-700 text-sm mb-4">
+              Revisa si tu pregunta ya está respondida en nuestras secciones informativas:
+            </p>
+            <div class="space-y-2">
+              <a href="/legal" class="block text-corporate-primary hover:text-corporate-secondary text-sm">
+                → Información Legal
+              </a>
+              <a href="/educacion" class="block text-corporate-primary hover:text-corporate-secondary text-sm">
+                → Centro de Educación
+              </a>
+              <a href="/categoria/alertas" class="block text-corporate-primary hover:text-corporate-secondary text-sm">
+                → Alertas de Seguridad
+              </a>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+            <h3 class="font-semibold text-gray-900 mb-4">🔗 Síguenos</h3>
+            <p class="text-gray-600 text-sm mb-4">
+              Mantente al día con las últimas noticias y análisis:
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-corporate-primary transition-colors">
+                <span class="sr-only">Twitter</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-corporate-primary transition-colors">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-red-600 transition-colors">
+                <span class="sr-only">YouTube</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Contact form handling
+  document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Show loading state
+    const submitButton = this.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Enviando...';
+    submitButton.disabled = true;
+    
+    // Simulate form submission (replace with actual implementation)
+    setTimeout(() => {
+      // Reset button
+      submitButton.textContent = originalText;
+      submitButton.disabled = false;
+      
+      // Show success message
+      const messagesDiv = document.getElementById('form-messages');
+      const successMessage = document.getElementById('success-message');
+      
+      messagesDiv.classList.remove('hidden');
+      successMessage.classList.remove('hidden');
+      
+      // Reset form
+      this.reset();
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        messagesDiv.classList.add('hidden');
+        successMessage.classList.add('hidden');
+      }, 5000);
+    }, 1000);
+  });
+
+  // Form validation feedback
+  const inputs = document.querySelectorAll('input[required], textarea[required], select[required]');
+  inputs.forEach(input => {
+    input.addEventListener('blur', function() {
+      if (this.value.trim() === '') {
+        this.classList.add('border-red-300', 'focus:border-red-500', 'focus:ring-red-500');
+        this.classList.remove('border-gray-300', 'focus:border-blue-500', 'focus:ring-blue-500');
+      } else {
+        this.classList.remove('border-red-300', 'focus:border-red-500', 'focus:ring-red-500');
+        this.classList.add('border-gray-300', 'focus:border-blue-500', 'focus:ring-blue-500');
+      }
+    });
+  });
+
+  // Email validation
+  const emailInput = document.getElementById('email');
+  emailInput?.addEventListener('blur', function() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (this.value && !emailRegex.test(this.value)) {
+      this.classList.add('border-red-300', 'focus:border-red-500', 'focus:ring-red-500');
+      this.classList.remove('border-gray-300', 'focus:border-blue-500', 'focus:ring-blue-500');
+    }
+  });
+</script>

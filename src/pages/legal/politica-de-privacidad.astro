@@ -1,0 +1,228 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Política de Privacidad | Comunidad Broker',
+  description: 'Política de privacidad de Comunidad Broker. Cómo recopilamos, utilizamos y protegemos su información personal.',
+  canonical: '/legal/politica-de-privacidad'
+};
+---
+
+<BaseLayout seo={seo}>
+  <div class="container mx-auto px-4 py-12 max-w-4xl">
+    <div class="prose prose-lg mx-auto">
+      <h1>Política de Privacidad</h1>
+      
+      <p class="lead text-gray-600">
+        Última actualización: {new Date().toLocaleDateString('es-ES')}
+      </p>
+
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
+        <p class="text-blue-700">
+          <strong>Compromiso con la Privacidad:</strong> En Comunidad Broker, respetamos su privacidad y nos comprometemos a proteger su información personal de acuerdo con el RGPD y las leyes de protección de datos aplicables.
+        </p>
+      </div>
+
+      <h2>1. Información que Recopilamos</h2>
+
+      <h3>1.1 Información Proporcionada Voluntariamente</h3>
+      <ul>
+        <li><strong>Formularios de contacto:</strong> Nombre, email, mensaje</li>
+        <li><strong>Suscripción al newsletter:</strong> Dirección de email</li>
+        <li><strong>Comentarios:</strong> Nombre, email, contenido del comentario (si está habilitado)</li>
+      </ul>
+
+      <h3>1.2 Información Recopilada Automáticamente</h3>
+      <ul>
+        <li><strong>Analytics:</strong> Páginas visitadas, tiempo en el sitio, fuente de tráfico</li>
+        <li><strong>Información técnica:</strong> Dirección IP, tipo de navegador, dispositivo</li>
+        <li><strong>Cookies:</strong> Preferencias de usuario, datos de sesión</li>
+      </ul>
+
+      <h3>1.3 Información NO Recopilada</h3>
+      <p>
+        No recopilamos información financiera personal, números de cuenta bancaria, o datos de tarjetas de crédito. Tampoco rastreamos su actividad en otros sitios web.
+      </p>
+
+      <h2>2. Base Legal para el Procesamiento</h2>
+      <p>
+        Procesamos su información personal bajo las siguientes bases legales:
+      </p>
+      <ul>
+        <li><strong>Consentimiento:</strong> Para newsletters y comunicaciones promocionales</li>
+        <li><strong>Interés legítimo:</strong> Para analytics y mejora del sitio web</li>
+        <li><strong>Ejecución de contrato:</strong> Para responder a consultas y proporcionar servicios</li>
+      </ul>
+
+      <h2>3. Cómo Utilizamos su Información</h2>
+
+      <h3>3.1 Usos Principales</h3>
+      <ul>
+        <li>Responder a sus consultas y comentarios</li>
+        <li>Enviar newsletters (solo con su consentimiento)</li>
+        <li>Mejorar nuestro contenido y servicios</li>
+        <li>Analizar el uso del sitio web para optimización</li>
+        <li>Cumplir con obligaciones legales</li>
+      </ul>
+
+      <h3>3.2 Marketing y Comunicaciones</h3>
+      <p>
+        Solo enviamos comunicaciones promocionales a quienes han dado su consentimiento explícito. Puede darse de baja en cualquier momento usando el enlace incluido en cada email.
+      </p>
+
+      <h2>4. Compartir Información con Terceros</h2>
+
+      <h3>4.1 Cuándo Compartimos Información</h3>
+      <p>
+        Compartimos información limitada en estas circunstancias:
+      </p>
+      <ul>
+        <li><strong>Proveedores de servicios:</strong> Analytics (Plausible), hosting (Vercel)</li>
+        <li><strong>Requisitos legales:</strong> Cuando sea requerido por ley</li>
+        <li><strong>Consentimiento:</strong> Cuando usted nos haya dado permiso explícito</li>
+      </ul>
+
+      <h3>4.2 Terceros con Acceso a Datos</h3>
+      <table class="min-w-full">
+        <thead>
+          <tr>
+            <th class="border-b text-left">Servicio</th>
+            <th class="border-b text-left">Datos Compartidos</th>
+            <th class="border-b text-left">Propósito</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border-b">Plausible Analytics</td>
+            <td class="border-b">Datos de navegación anonimizados</td>
+            <td class="border-b">Estadísticas del sitio web</td>
+          </tr>
+          <tr>
+            <td class="border-b">Vercel (Hosting)</td>
+            <td class="border-b">Logs del servidor, IP</td>
+            <td class="border-b">Hosting y funcionamiento del sitio</td>
+          </tr>
+          <tr>
+            <td class="border-b">Servicios de Email</td>
+            <td class="border-b">Email, nombre (solo suscriptores)</td>
+            <td class="border-b">Envío de newsletters</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. Cookies y Tecnologías de Seguimiento</h2>
+
+      <h3>5.1 Tipos de Cookies que Utilizamos</h3>
+      <ul>
+        <li><strong>Cookies esenciales:</strong> Necesarias para el funcionamiento del sitio</li>
+        <li><strong>Cookies analíticas:</strong> Para entender cómo usa el sitio (Plausible)</li>
+        <li><strong>Cookies de preferencias:</strong> Para recordar sus configuraciones</li>
+      </ul>
+
+      <h3>5.2 Gestión de Cookies</h3>
+      <p>
+        Puede gestionar las cookies a través de la configuración de su navegador. Sin embargo, deshabilitar ciertas cookies puede afectar la funcionalidad del sitio.
+      </p>
+
+      <h2>6. Sus Derechos bajo el RGPD</h2>
+
+      <h3>6.1 Derechos Disponibles</h3>
+      <ul>
+        <li><strong>Acceso:</strong> Solicitar una copia de sus datos personales</li>
+        <li><strong>Rectificación:</strong> Corregir datos inexactos o incompletos</li>
+        <li><strong>Supresión:</strong> Solicitar la eliminación de sus datos ("derecho al olvido")</li>
+        <li><strong>Limitación:</strong> Restringir el procesamiento de sus datos</li>
+        <li><strong>Portabilidad:</strong> Recibir sus datos en formato estructurado</li>
+        <li><strong>Oposición:</strong> Oponerse al procesamiento de sus datos</li>
+        <li><strong>Retirada de consentimiento:</strong> Retirar el consentimiento en cualquier momento</li>
+      </ul>
+
+      <h3>6.2 Cómo Ejercer sus Derechos</h3>
+      <p>
+        Para ejercer cualquiera de estos derechos, contáctenos en:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:privacy@comunidadbroker.com">privacy@comunidadbroker.com</a></li>
+        <li>Formulario de contacto: <a href="/contacto">/contacto</a> (marcando "Solicitud de Privacidad")</li>
+      </ul>
+
+      <p>
+        Responderemos a su solicitud dentro de 30 días naturales.
+      </p>
+
+      <h2>7. Retención de Datos</h2>
+
+      <h3>7.1 Períodos de Retención</h3>
+      <ul>
+        <li><strong>Datos de contacto:</strong> Hasta 3 años después del último contacto</li>
+        <li><strong>Suscriptores de newsletter:</strong> Hasta que se den de baja</li>
+        <li><strong>Datos analíticos:</strong> Agregados y anonimizados por tiempo indefinido</li>
+        <li><strong>Logs del servidor:</strong> Máximo 12 meses</li>
+      </ul>
+
+      <h3>7.2 Eliminación Automática</h3>
+      <p>
+        Implementamos procesos automáticos para eliminar datos personales una vez que expiran los períodos de retención.
+      </p>
+
+      <h2>8. Seguridad de los Datos</h2>
+
+      <h3>8.1 Medidas de Seguridad</h3>
+      <ul>
+        <li><strong>Cifrado:</strong> HTTPS en todo el sitio web</li>
+        <li><strong>Acceso limitado:</strong> Solo personal autorizado tiene acceso a datos personales</li>
+        <li><strong>Backups seguros:</strong> Copias de seguridad cifradas</li>
+        <li><strong>Actualizaciones regulares:</strong> Software y sistemas actualizados</li>
+      </ul>
+
+      <h3>8.2 Respuesta a Incidentes</h3>
+      <p>
+        En caso de una brecha de seguridad que afecte datos personales, notificaremos a las autoridades competentes y a los usuarios afectados dentro de 72 horas.
+      </p>
+
+      <h2>9. Transferencias Internacionales</h2>
+      <p>
+        Algunos de nuestros proveedores de servicios pueden estar ubicados fuera del Espacio Económico Europeo (EEE). Nos aseguramos de que estas transferencias cumplan con las salvaguardas adecuadas del RGPD.
+      </p>
+
+      <h2>10. Menores de Edad</h2>
+      <p>
+        Nuestro sitio web no está dirigido a menores de 16 años. No recopilamos conscientemente información personal de menores de 16 años. Si descubrimos que hemos recopilado tal información, la eliminaremos inmediatamente.
+      </p>
+
+      <h2>11. Cambios en esta Política</h2>
+      <p>
+        Podemos actualizar esta Política de Privacidad ocasionalmente. Los cambios significativos serán notificados a través de:
+      </p>
+      <ul>
+        <li>Aviso prominente en el sitio web</li>
+        <li>Email a suscriptores (para cambios que afecten el procesamiento)</li>
+        <li>Actualización de la fecha en la parte superior de esta página</li>
+      </ul>
+
+      <h2>12. Contacto y Autoridad de Control</h2>
+
+      <h3>12.1 Contacto del Responsable de Datos</h3>
+      <ul>
+        <li>Email: <a href="mailto:privacy@comunidadbroker.com">privacy@comunidadbroker.com</a></li>
+        <li>Dirección postal: [Dirección de la empresa]</li>
+      </ul>
+
+      <h3>12.2 Autoridad de Control</h3>
+      <p>
+        Si no está satisfecho con nuestra respuesta a sus preocupaciones de privacidad, tiene derecho a presentar una queja ante la Agencia Española de Protección de Datos (AEPD):
+      </p>
+      <ul>
+        <li>Web: <a href="https://www.aepd.es" target="_blank">www.aepd.es</a></li>
+        <li>Teléfono: 901 100 099</li>
+      </ul>
+
+      <div class="bg-green-50 border-l-4 border-green-500 p-4 mt-8">
+        <h3 class="text-green-800 text-lg font-semibold mb-2">Privacy by Design</h3>
+        <p class="text-green-700">
+          Hemos diseñado nuestro sitio web con la privacidad en mente desde el principio. Utilizamos analytics sin cookies (Plausible), minimizamos la recopilación de datos, y priorizamos la transparencia en todas nuestras prácticas de datos.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
